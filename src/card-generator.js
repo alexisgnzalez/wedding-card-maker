@@ -6,13 +6,16 @@ import {
   renderTopHeartFlourish,
   renderDelicateHollowHeartDivider, 
   renderWatercolorLaurelDivider, 
+  renderDoodleHeartFlourish,
+  renderGoldHeartWithSprig,
   renderHoleGuide, 
   THEMES 
 } from './floral-templates.js';
 
 export const DEFAULT_CARD_STATE = {
   themeId: 'crescent-watercolor',
-  title: 'Acuarela Rosas Blush & Eucalipto (Inspiración Original)',
+  title: 'Acuarela Rosas Blush & Eucalipto (Canva Novia)',
+  isCustomText: false, // Default: 100% genuine master artwork with zero artifacts
 
   // Text Content
   name1: 'Saray',
@@ -26,12 +29,12 @@ export const DEFAULT_CARD_STATE = {
   // Typography
   namesFont: 'alex-brush',
   ampersandFont: 'alex-brush',
-  greetingFont: 'cormorant',
+  greetingFont: 'alex-brush',
   highlightFont: 'alex-brush',
   messageFont: 'cormorant',
   dateFont: 'cormorant',
 
-  // Font Sizes Calibrated for 5cm (50mm) Circular Print (Matching Canva Reference WhatsApp .52 copy)
+  // Font Sizes Calibrated for 5cm (50mm) Circular Print
   namesFontSize: 38,
   ampersandFontSize: 34,
   greetingFontSize: 22,
@@ -40,19 +43,19 @@ export const DEFAULT_CARD_STATE = {
   dateFontSize: 22,
 
   // Colors
-  bgColor: '#FFFFFF',
+  bgColor: '#FCFAF7',
   namesColor: '#24201E',
-  ampersandColor: '#A47C48',
-  greetingColor: '#554C46',
+  ampersandColor: '#B5874A',
+  greetingColor: '#24201E',
   highlightColor: '#24201E',
   messageColor: '#302A27',
   dateColor: '#24201E',
-  flourishColor: '#A47C48',
+  flourishColor: '#B5874A',
   borderStrokeColor: '#D4AF37',
   showBorderRing: false,
 
   // Alignment
-  textOffsetX: 56, // Optical balance (centerX = 306) between crescent flowers (left) and circle edge (right)
+  textOffsetX: 56, // Optical balance for crescent floral layouts
 
   // Hole Guide Settings
   showHole: false,
@@ -77,7 +80,10 @@ export function generateCardSvg(state) {
 
   const isCrescent = currentTheme.layout === 'crescent-authentic';
   const isMonogram = currentTheme.layout === 'monogram-gold' || currentTheme.layout === 'minimal-seal';
+  const isGeometric = currentTheme.layout === 'geometric-eucalyptus';
+  const isLavender = currentTheme.layout === 'wild-lavender';
   const hasTopHole = s.showHole || s.showPin || s.showGuide;
+  const isCustomMode = Boolean(s.isCustomText || isMonogram);
 
   // XML safe escaper
   const esc = (txt) => {
@@ -96,152 +102,216 @@ export function generateCardSvg(state) {
   const highlightSafe = esc(s.highlightText);
   const dateSafe = esc(s.dateText);
 
-  // In crescent theme, center optically in the right opening (x=282px by default)
-  const centerX = isCrescent ? (250 + (s.textOffsetX ?? 56)) : 250;
+  // Compute optical center X for each layout
+  let centerX = 250;
+  if (isCrescent) {
+    centerX = 250 + (s.textOffsetX ?? 56);
+  } else if (isLavender) {
+    centerX = 264; // Slight right shift to balance dense lavender bouquet on left
+  } else {
+    centerX = 250; // Symmetrical center for Geometric, Monogram & Minimal
+  }
 
   let textGroupContent = '';
 
-  if (isMonogram) {
-    // Monogram & Gold Layout (Exact Proportions from WhatsApp Reference .51 / .52)
-    const offsetY = hasTopHole ? 10 : 0;
-    const greetingY = 154 + offsetY;
-    const namesY = 208 + offsetY;
-    const messageStartY = 258 + offsetY;
-    const dateY = 368 + offsetY;
+  // In pristine master mode, typography is already flawlessly integrated in the master artwork!
+  if (isCustomMode) {
+    if (isMonogram) {
+      // Monogram & Gold Layout (Exact Proportions from Reference)
+      const offsetY = hasTopHole ? 10 : 0;
+      const greetingY = 154 + offsetY;
+      const namesY = 208 + offsetY;
+      const messageStartY = 258 + offsetY;
+      const dateY = 368 + offsetY;
 
-    textGroupContent = `
-      <!-- Heading: "Muchas Gracias" in Gold Calligraphy -->
-      <text x="${centerX}" y="${greetingY}" 
-            font-family="${greetingFamily}" 
-            font-size="${s.greetingFontSize}" 
-            fill="url(#gold-foil)" 
-            text-anchor="middle"
-            font-weight="normal">
-        ${greetingSafe === 'Gracias por' ? 'Muchas Gracias' : greetingSafe}
-      </text>
-
-      <!-- Names: "Saray & Michael" in High-Fashion Display Serif (Titlecase, Tracked) -->
-      <text x="${centerX}" y="${namesY}" text-anchor="middle">
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2.5" font-weight="600">${name1Safe}</tspan>
-        <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2.5" font-weight="600">${name2Safe}</tspan>
-      </text>
-
-      <!-- Message: 3-line balanced gold/bronze gratitude statement in cursive -->
-      <g id="message-group" text-anchor="middle">
-        ${renderMonogramMessage(s.messageText, centerX, messageStartY, s.messageFontSize, messageFamily, s.messageColor)}
-      </g>
-
-      <!-- Flanking Gold Date Dividers: — 19. 11. 2026 — (Clean gap, never overlaps text) -->
-      <g id="date-group" text-anchor="middle">
-        <line x1="${centerX - 136}" y1="${dateY - 7}" x2="${centerX - 84}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
-        <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="2" font-weight="600">
-          ${dateSafe}
+      textGroupContent = `
+        <!-- Heading: "Muchas Gracias" in Gold Calligraphy -->
+        <text x="${centerX}" y="${greetingY}" 
+              font-family="${greetingFamily}" 
+              font-size="${s.greetingFontSize}" 
+              fill="url(#gold-foil)" 
+              text-anchor="middle"
+              font-weight="normal">
+          ${greetingSafe === 'Gracias por' ? 'Muchas Gracias' : greetingSafe}
         </text>
-        <line x1="${centerX + 84}" y1="${dateY - 7}" x2="${centerX + 136}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
-      </g>
-    `;
-  } else if (isCrescent) {
-    // Faithful Canva Masterpiece Crescent Layout (Exact WhatsApp .52 copy calibration)
-    const offsetY = hasTopHole ? 10 : 0;
-    const namesY = 142 + offsetY;
-    const dividerY = 180 + offsetY;
-    const subtitleY = 236 + offsetY;
-    const messageY = 286 + offsetY;
-    const dateY = 366 + offsetY;
-    const laurelY = 396 + offsetY;
 
-    const isSplitGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
-    const subtitleText = isSplitGreeting ? 'Gracias por acompañarnos' : `${greetingSafe} ${highlightSafe}`.trim();
+        <!-- Names: "Saray & Michael" in High-Fashion Display Serif (Titlecase, Tracked) -->
+        <text x="${centerX}" y="${namesY}" text-anchor="middle">
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2.5" font-weight="600">${name1Safe}</tspan>
+          <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2.5" font-weight="600">${name2Safe}</tspan>
+        </text>
 
-    textGroupContent = `
-      <!-- 1. Hero Names: "Saray & Michael" in signature flowing calligraphy -->
-      <text x="${centerX}" y="${namesY}" text-anchor="middle">
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name1Safe}</tspan>
-        <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name2Safe}</tspan>
-      </text>
-
-      <!-- 2. Delicate Line with Hollow Heart Divider: —— ♡ —— -->
-      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 180)}
-
-      <!-- 3. Subtitle in Romantic Calligraphy: "Gracias por acompañarnos" -->
-      <text x="${centerX}" y="${subtitleY}" 
-            font-family="${highlightFamily || namesFamily}" 
-            font-size="${s.highlightFontSize}" 
-            fill="${s.highlightColor || s.namesColor}" 
-            text-anchor="middle" 
-            font-weight="normal">
-        ${subtitleText}
-      </text>
-
-      <!-- 4. Emotive Body Message in 2 balanced lines of clean Cormorant Garamond -->
-      ${s.messageText ? `
+        <!-- Message: 3-line balanced gold/bronze gratitude statement in cursive -->
         <g id="message-group" text-anchor="middle">
-          ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
+          ${renderMonogramMessage(s.messageText, centerX, messageStartY, s.messageFontSize, messageFamily, s.messageColor)}
         </g>
-      ` : ''}
 
-      <!-- 5. Date in Elegant Tabular Numbers: "19. 11. 2026" -->
-      <text id="date-text" 
-            x="${centerX}" 
-            y="${dateY}" 
-            font-family="${dateFamily}" 
-            font-size="${s.dateFontSize}" 
-            fill="${s.dateColor}" 
-            letter-spacing="2" 
-            text-anchor="middle"
-            font-weight="600">
-        ${dateSafe}
-      </text>
+        <!-- Flanking Gold Date Dividers: — 19. 11. 2026 — -->
+        <g id="date-group" text-anchor="middle">
+          <line x1="${centerX - 136}" y1="${dateY - 7}" x2="${centerX - 84}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+          <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="2" font-weight="600">
+            ${dateSafe}
+          </text>
+          <line x1="${centerX + 84}" y1="${dateY - 7}" x2="${centerX + 136}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+        </g>
+      `;
+    } else if (isCrescent) {
+      // Faithful Canva Crescent Layout
+      const offsetY = hasTopHole ? 10 : 0;
+      const namesY = 142 + offsetY;
+      const subtitleY = 236 + offsetY;
+      const messageY = 286 + offsetY;
+      const dateY = 366 + offsetY;
 
-      <!-- 6. Authentic Watercolor Laurel Branch with Dusty Pink Heart (Full Unclipped Asset) -->
-      ${renderWatercolorLaurelDivider(centerX, laurelY, 0.72)}
-    `;
-  } else {
-    // Centered layout for Wreath & Twin Bouquets
-    const offsetY = hasTopHole ? 10 : 0;
-    const greetingY = 162 + offsetY;
-    const namesY = 216 + offsetY;
-    const dividerY = 252 + offsetY;
-    const messageY = 296 + offsetY;
-    const dateY = 372 + offsetY;
+      const isSplitGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
+      const subtitleText = isSplitGreeting ? 'Gracias por acompañarnos' : `${greetingSafe} ${highlightSafe}`.trim();
 
-    textGroupContent = `
-      <!-- Greeting in Flowing Script or Serif -->
-      <text x="${centerX}" y="${greetingY}" 
-            font-family="${greetingFamily}" 
-            font-size="${s.greetingFontSize}" 
-            fill="${s.greetingColor}" 
-            text-anchor="middle"
-            font-weight="500">
-        ${greetingSafe === 'Gracias por' ? 'Muchas Gracias' : greetingSafe}
-      </text>
+      textGroupContent = `
+        <!-- 1. Hero Names: "Saray & Michael" in flowing calligraphy -->
+        <text x="${centerX}" y="${namesY}" text-anchor="middle">
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name1Safe}</tspan>
+          <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="url(#gold-foil)" font-weight="normal"> ${ampersandSafe} </tspan>
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name2Safe}</tspan>
+        </text>
 
-      <!-- Names: "Saray & Michael" -->
-      <text x="${centerX}" y="${namesY}" text-anchor="middle">
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="600">${name1Safe}</tspan>
-        <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="600">${name2Safe}</tspan>
-      </text>
+        <!-- 2. Subtitle in Calligraphy: "Gracias por acompañarnos" -->
+        <text x="${centerX}" y="${subtitleY}" 
+              font-family="${highlightFamily || namesFamily}" 
+              font-size="${s.highlightFontSize}" 
+              fill="${s.highlightColor || s.namesColor}" 
+              text-anchor="middle" 
+              font-weight="normal">
+          ${subtitleText}
+        </text>
 
-      <!-- Fine Line with Hollow Heart Divider -->
-      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 160)}
+        <!-- 3. Emotive Body Message in 2 balanced lines of clean Cormorant Garamond -->
+        ${s.messageText ? `
+          <g id="message-group" text-anchor="middle">
+            ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
+          </g>
+        ` : ''}
 
-      <!-- Emotive Body Message -->
-      <g id="message-group" text-anchor="middle">
-        ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
-      </g>
-
-      <!-- Date with Flanking Rules -->
-      <g id="date-group" text-anchor="middle">
-        <line x1="${centerX - 95}" y1="${dateY - 7}" x2="${centerX - 55}" y2="${dateY - 7}" stroke="${s.flourishColor}" stroke-width="1.3" stroke-linecap="round"/>
-        <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="3" font-weight="600">
+        <!-- 4. Date in Elegant Tabular Numbers: "19. 11. 2026" -->
+        <text id="date-text" 
+              x="${centerX}" 
+              y="${dateY}" 
+              font-family="${dateFamily}" 
+              font-size="${s.dateFontSize}" 
+              fill="${s.dateColor}" 
+              letter-spacing="2" 
+              text-anchor="middle"
+              font-weight="600">
           ${dateSafe}
         </text>
-        <line x1="${centerX + 55}" y1="${dateY - 7}" x2="${centerX + 95}" y2="${dateY - 7}" stroke="${s.flourishColor}" stroke-width="1.3" stroke-linecap="round"/>
-      </g>
-    `;
+      `;
+    } else if (isGeometric) {
+      // Variant 1: Faceted Geometric Gold Polygon with Eucalyptus
+      const offsetY = hasTopHole ? 10 : 0;
+      const namesY = 162 + offsetY;
+      const dividerY = 196 + offsetY;
+      const subtitleY = 242 + offsetY;
+      const messageY = 286 + offsetY;
+      const dateY = 362 + offsetY;
+
+      const isSplitGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
+      const subtitleText = isSplitGreeting ? 'Gracias por acompañarnos' : `${greetingSafe} ${highlightSafe}`.trim();
+
+      textGroupContent = `
+        <!-- 1. Hero Names: "Saray & Michael" in Modern Classic Serif -->
+        <text x="${centerX}" y="${namesY}" text-anchor="middle">
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2" font-weight="600">${name1Safe}</tspan>
+          <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2" font-weight="600">${name2Safe}</tspan>
+        </text>
+
+        <!-- 2. Gold Heart with Olive Sprig Flourish -->
+        ${renderGoldHeartWithSprig(centerX, dividerY)}
+
+        <!-- 3. Subtitle in Modern Organic Cursive: "Gracias por acompañarnos" -->
+        <text x="${centerX}" y="${subtitleY}" 
+              font-family="${highlightFamily || namesFamily}" 
+              font-size="${s.highlightFontSize}" 
+              fill="${s.highlightColor || s.namesColor}" 
+              text-anchor="middle" 
+              font-weight="normal">
+          ${subtitleText}
+        </text>
+
+        <!-- 4. Emotive Message in Clean Serif -->
+        ${s.messageText ? `
+          <g id="message-group" text-anchor="middle">
+            ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
+          </g>
+        ` : ''}
+
+        <!-- 5. Event Date -->
+        <text id="date-text" 
+              x="${centerX}" 
+              y="${dateY}" 
+              font-family="${dateFamily}" 
+              font-size="${s.dateFontSize}" 
+              fill="${s.dateColor}" 
+              letter-spacing="2.5" 
+              text-anchor="middle"
+              font-weight="600">
+          ${dateSafe}
+        </text>
+      `;
+    } else if (isLavender) {
+      // Variant 5: Wild Botanical Lavender & Daisies with Stardust Gold Dust
+      const offsetY = hasTopHole ? 10 : 0;
+      const namesY = 138 + offsetY;
+      const dividerY = 176 + offsetY;
+      const subtitleY = 230 + offsetY;
+      const messageY = 276 + offsetY;
+      const dateY = 358 + offsetY;
+
+      const isSplitGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
+      const subtitleText = isSplitGreeting ? 'Gracias por acompañarnos' : `${greetingSafe} ${highlightSafe}`.trim();
+
+      textGroupContent = `
+        <!-- 1. Hero Names: "Saray & Michael" in Whimsical Handwritten Script -->
+        <text x="${centerX}" y="${namesY}" text-anchor="middle">
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name1Safe}</tspan>
+          <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
+          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name2Safe}</tspan>
+        </text>
+
+        <!-- 2. Hand-Drawn Doodle Heart with Leaf Twigs -->
+        ${renderDoodleHeartFlourish(centerX, dividerY, s.flourishColor || '#2D2825')}
+
+        <!-- 3. Subtitle in Romantic Script: "Gracias por acompañarnos" -->
+        <text x="${centerX}" y="${subtitleY}" 
+              font-family="${highlightFamily || namesFamily}" 
+              font-size="${s.highlightFontSize}" 
+              fill="${s.highlightColor || s.namesColor}" 
+              text-anchor="middle" 
+              font-weight="normal">
+          ${subtitleText}
+        </text>
+
+        <!-- 4. Emotive Message in Serif -->
+        ${s.messageText ? `
+          <g id="message-group" text-anchor="middle">
+            ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
+          </g>
+        ` : ''}
+
+        <!-- 5. Event Date -->
+        <text id="date-text" 
+              x="${centerX}" 
+              y="${dateY}" 
+              font-family="${dateFamily}" 
+              font-size="${s.dateFontSize}" 
+              fill="${s.dateColor}" 
+              letter-spacing="2" 
+              text-anchor="middle"
+              font-weight="600">
+          ${dateSafe}
+        </text>
+      `;
+    }
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -270,28 +340,30 @@ export function generateCardSvg(state) {
     <!-- Base Background Circle -->
     <circle cx="250" cy="250" r="250" fill="${s.bgColor}"/>
 
-    <!-- Optional Decorative Inner Border Ring -->
+    <!-- Optional Decorative Inner Border Ring (when manually toggled or theme specific) -->
     ${s.showBorderRing ? `
-      <circle cx="250" cy="250" r="238" fill="none" stroke="${s.borderStrokeColor}" stroke-width="1.6" opacity="0.85"/>
-      <circle cx="250" cy="250" r="233" fill="none" stroke="${s.borderStrokeColor}" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.6"/>
+      <circle cx="250" cy="250" r="236" fill="none" stroke="${s.borderStrokeColor || 'url(#gold-foil)'}" stroke-width="2.5" opacity="0.95"/>
     ` : ''}
 
-    <!-- Botanical Floral Artwork Layer (Authentic High-Res Watercolor) -->
-    ${renderFloralBackground(currentTheme.layout, { flourish: s.flourishColor })}
+    <!-- Botanical Floral Artwork Layer (Pristine 1:1 Masterpiece OR Clean Template) -->
+    ${renderFloralBackground(currentTheme.layout, { flourish: s.flourishColor, border: s.borderStrokeColor }, isCustomMode)}
 
-    <!-- Typography Layer (Print-Calibrated Hierarchy) -->
-    <g id="typography-layer">
-      ${textGroupContent}
-    </g>
+    <!-- Live Editable Typography Content Layer (rendered when in custom text mode) -->
+    ${textGroupContent ? `
+      <g id="card-typography">
+        ${textGroupContent}
+      </g>
+    ` : ''}
   </g>
 
   <!-- Hole Punch Guide & Tagpin Layer -->
   ${renderHoleGuide({
     showHole: s.showHole,
     showGuide: s.showGuide,
-    showPin: s.showPin,
+    holeX: 250,
     holeY: s.holeY,
-    holeRadius: s.holeRadius
+    holeRadius: s.holeRadius,
+    showPin: s.showPin
   })}
 
   <!-- Outer Die-Cut Circular Cutline -->
@@ -299,53 +371,58 @@ export function generateCardSvg(state) {
 </svg>`;
 }
 
-// Crescent Layout message wrapper: 2 lines balanced, comfortable leading, solid weight
-function renderCrescentMessage(text, x, startY, fontSize, fontFamily, color) {
+// Emotive Body Message Renderer in 2 balanced lines of clean serif
+function renderCrescentMessage(text, x, startY, fontSize = 19, fontFamily = 'serif', color = '#302A27') {
   if (!text) return '';
-  const words = text.split(' ');
+  const clean = String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 
-  // Balanced split around the middle
+  if (clean.includes('Su presencia hizo este día aún más especial') || clean.includes('Su presencia hizo este')) {
+    return `
+    <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="600" letter-spacing="0.3">
+      <tspan x="${x}" dy="0">Su presencia hizo este</tspan>
+      <tspan x="${x}" dy="${fontSize * 1.35}">día aún más especial</tspan>
+    </text>
+  `;
+  }
+
+  const words = clean.split(' ');
+  if (words.length <= 4) {
+    return `<text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="600">${clean}</text>`;
+  }
+
   const mid = Math.ceil(words.length / 2);
   const line1 = words.slice(0, mid).join(' ');
   const line2 = words.slice(mid).join(' ');
 
   return `
-    <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="600" letter-spacing="0.3">
+    <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="600">
       <tspan x="${x}" dy="0">${line1}</tspan>
       <tspan x="${x}" dy="${fontSize * 1.35}">${line2}</tspan>
     </text>
   `;
 }
 
-// Monogram Layout message wrapper: 3 elegant script lines
-function renderMonogramMessage(text, x, startY, fontSize, fontFamily, color) {
+// Monogram 3-line message renderer in cursive italic
+function renderMonogramMessage(text, x, startY, fontSize = 20, fontFamily = 'serif', color = '#99773D') {
   if (!text) return '';
+  const clean = String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 
-  if (text.includes('Por acompañarnos')) {
+  if (clean.includes('Por acompañarnos en nuestra boda') || clean.includes('presencia hizo este día especial')) {
     return `
-      <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="500">
+      <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="normal">
         <tspan x="${x}" dy="0">Por acompañarnos</tspan>
-        <tspan x="${x}" dy="${fontSize * 1.35}">en nuestra boda, su presencia hizo este</tspan>
-        <tspan x="${x}" dy="${fontSize * 1.35}">día especial</tspan>
+        <tspan x="${x}" dy="25">en nuestra boda, su presencia hizo este</tspan>
+        <tspan x="${x}" dy="24">día especial</tspan>
       </text>
     `;
   }
 
-  const words = text.split(' ');
-  if (words.length <= 4) {
-    return `<text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="500">${text}</text>`;
-  }
-
-  const third = Math.ceil(words.length / 3);
-  const line1 = words.slice(0, third).join(' ');
-  const line2 = words.slice(third, third * 2).join(' ');
-  const line3 = words.slice(third * 2).join(' ');
-
-  return `
-    <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="500">
-      <tspan x="${x}" dy="0">${line1}</tspan>
-      <tspan x="${x}" dy="${fontSize * 1.35}">${line2}</tspan>
-      <tspan x="${x}" dy="${fontSize * 1.35}">${line3}</tspan>
-    </text>
-  `;
+  const words = clean.split(' ');
+  return `<text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-weight="normal">${clean}</text>`;
 }

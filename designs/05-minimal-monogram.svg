@@ -59,13 +59,12 @@
     <!-- Base Background Circle -->
     <circle cx="250" cy="250" r="250" fill="#FAF8F4"/>
 
-    <!-- Optional Decorative Inner Border Ring -->
+    <!-- Optional Decorative Inner Border Ring (when manually toggled or theme specific) -->
     
-      <circle cx="250" cy="250" r="238" fill="none" stroke="#D4AF37" stroke-width="1.6" opacity="0.85"/>
-      <circle cx="250" cy="250" r="233" fill="none" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.6"/>
+      <circle cx="250" cy="250" r="236" fill="none" stroke="#D4AF37" stroke-width="2.5" opacity="0.95"/>
     
 
-    <!-- Botanical Floral Artwork Layer (Authentic High-Res Watercolor) -->
+    <!-- Botanical Floral Artwork Layer (Pristine 1:1 Masterpiece OR Clean Template) -->
     
         <g id="minimal-monogram-group">
           <circle cx="250" cy="250" r="236" fill="none" stroke="url(#gold-foil)" stroke-width="1.6" opacity="0.75"/>
@@ -76,47 +75,49 @@
         </g>
       
 
-    <!-- Typography Layer (Print-Calibrated Hierarchy) -->
-    <g id="typography-layer">
-      
-      <!-- Heading: "Muchas Gracias" in Gold Calligraphy -->
-      <text x="250" y="154" 
-            font-family="'Alex Brush', cursive" 
-            font-size="44" 
-            fill="url(#gold-foil)" 
-            text-anchor="middle"
-            font-weight="normal">
-        Muchas Gracias
-      </text>
-
-      <!-- Names: "Saray & Michael" in High-Fashion Display Serif (Titlecase, Tracked) -->
-      <text x="250" y="208" text-anchor="middle">
-        <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Saray</tspan>
-        <tspan font-family="'Tenor Sans', sans-serif" font-size="36" fill="#B5874A" font-weight="normal"> &amp; </tspan>
-        <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Michael</tspan>
-      </text>
-
-      <!-- Message: 3-line balanced gold/bronze gratitude statement in cursive -->
-      <g id="message-group" text-anchor="middle">
+    <!-- Live Editable Typography Content Layer (rendered when in custom text mode) -->
+    
+      <g id="card-typography">
         
-      <text x="250" y="258" font-family="'Forum', serif" font-size="21" fill="#38312E" font-weight="500">
+        <!-- Heading: "Muchas Gracias" in Gold Calligraphy -->
+        <text x="250" y="154" 
+              font-family="'Alex Brush', cursive" 
+              font-size="44" 
+              fill="url(#gold-foil)" 
+              text-anchor="middle"
+              font-weight="normal">
+          Muchas Gracias
+        </text>
+
+        <!-- Names: "Saray & Michael" in High-Fashion Display Serif (Titlecase, Tracked) -->
+        <text x="250" y="208" text-anchor="middle">
+          <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Saray</tspan>
+          <tspan font-family="'Tenor Sans', sans-serif" font-size="36" fill="#B5874A" font-weight="normal"> &amp; </tspan>
+          <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Michael</tspan>
+        </text>
+
+        <!-- Message: 3-line balanced gold/bronze gratitude statement in cursive -->
+        <g id="message-group" text-anchor="middle">
+          
+      <text x="250" y="258" font-family="'Forum', serif" font-size="21" fill="#38312E" font-weight="normal">
         <tspan x="250" dy="0">Por acompañarnos</tspan>
-        <tspan x="250" dy="28.35">en nuestra boda, su presencia hizo este</tspan>
-        <tspan x="250" dy="28.35">día especial</tspan>
+        <tspan x="250" dy="25">en nuestra boda, su presencia hizo este</tspan>
+        <tspan x="250" dy="24">día especial</tspan>
       </text>
     
-      </g>
+        </g>
 
-      <!-- Flanking Gold Date Dividers: — 19. 11. 2026 — (Clean gap, never overlaps text) -->
-      <g id="date-group" text-anchor="middle">
-        <line x1="114" y1="361" x2="166" y2="361" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
-        <text x="250" y="368" font-family="'Tenor Sans', sans-serif" font-size="24" fill="#26211F" letter-spacing="2" font-weight="600">
-          19. 11. 2026
-        </text>
-        <line x1="334" y1="361" x2="386" y2="361" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+        <!-- Flanking Gold Date Dividers: — 19. 11. 2026 — -->
+        <g id="date-group" text-anchor="middle">
+          <line x1="114" y1="361" x2="166" y2="361" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+          <text x="250" y="368" font-family="'Tenor Sans', sans-serif" font-size="24" fill="#26211F" letter-spacing="2" font-weight="600">
+            19. 11. 2026
+          </text>
+          <line x1="334" y1="361" x2="386" y2="361" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+        </g>
+      
       </g>
     
-    </g>
   </g>
 
   <!-- Hole Punch Guide & Tagpin Layer -->

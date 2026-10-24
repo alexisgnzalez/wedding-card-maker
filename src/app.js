@@ -88,6 +88,11 @@ class WeddingCardApp {
     this.rangeHoleRadius = document.getElementById('range-hole-radius');
     this.valHoleRadius = document.getElementById('val-hole-radius');
 
+    // Mode indicator & toggle
+    this.modeBadgeIndicator = document.getElementById('mode-badge-indicator');
+    this.modeDescText = document.getElementById('mode-desc-text');
+    this.btnToggleCustomMode = document.getElementById('btn-toggle-custom-mode');
+
     // Quick toggles on stage
     this.btnToggleScale = document.getElementById('btn-toggle-scale');
     this.scaleLabel = document.getElementById('scale-label');
@@ -104,7 +109,7 @@ class WeddingCardApp {
     // Populate Preset Pills
     this.presetPillsBar.innerHTML = THEMES.map((t, idx) => `
       <button class="preset-pill ${idx === 0 ? 'active' : ''}" data-theme="${t.id}">
-        Opción ${idx + 1}: ${t.name.split('(')[0].trim()}
+        Opción ${idx + 1}: ${t.shortName || t.name}
       </button>
     `).join('');
 
@@ -143,6 +148,15 @@ class WeddingCardApp {
       this.applyTheme(e.target.value);
     });
 
+    // Mode toggle button
+    if (this.btnToggleCustomMode) {
+      this.btnToggleCustomMode.addEventListener('click', () => {
+        this.state.isCustomText = !this.state.isCustomText;
+        this.updateModeIndicator();
+        this.render();
+      });
+    }
+
     // Inputs: Texts
     const textHandler = () => {
       this.state.name1 = this.inputName1.value;
@@ -153,6 +167,8 @@ class WeddingCardApp {
       this.state.highlightText = this.inputHighlight.value;
       this.state.messageText = this.inputMessage.value;
       this.state.dateText = this.inputDate.value;
+      this.state.isCustomText = true;
+      this.updateModeIndicator();
       this.render();
     };
 
@@ -169,12 +185,12 @@ class WeddingCardApp {
     });
 
     // Fonts
-    this.fontNames.addEventListener('change', (e) => { this.state.namesFont = e.target.value; this.render(); });
-    this.fontAmpersand.addEventListener('change', (e) => { this.state.ampersandFont = e.target.value; this.render(); });
-    this.fontGreeting.addEventListener('change', (e) => { this.state.greetingFont = e.target.value; this.render(); });
-    this.fontHighlight.addEventListener('change', (e) => { this.state.highlightFont = e.target.value; this.render(); });
-    this.fontMessage.addEventListener('change', (e) => { this.state.messageFont = e.target.value; this.render(); });
-    this.fontDate.addEventListener('change', (e) => { this.state.dateFont = e.target.value; this.render(); });
+    this.fontNames.addEventListener('change', (e) => { this.state.namesFont = e.target.value; this.state.isCustomText = true; this.updateModeIndicator(); this.render(); });
+    this.fontAmpersand.addEventListener('change', (e) => { this.state.ampersandFont = e.target.value; this.state.isCustomText = true; this.updateModeIndicator(); this.render(); });
+    this.fontGreeting.addEventListener('change', (e) => { this.state.greetingFont = e.target.value; this.state.isCustomText = true; this.updateModeIndicator(); this.render(); });
+    this.fontHighlight.addEventListener('change', (e) => { this.state.highlightFont = e.target.value; this.state.isCustomText = true; this.updateModeIndicator(); this.render(); });
+    this.fontMessage.addEventListener('change', (e) => { this.state.messageFont = e.target.value; this.state.isCustomText = true; this.updateModeIndicator(); this.render(); });
+    this.fontDate.addEventListener('change', (e) => { this.state.dateFont = e.target.value; this.state.isCustomText = true; this.updateModeIndicator(); this.render(); });
 
     // Font Sizes
     this.sizeNames.addEventListener('input', (e) => {
@@ -428,6 +444,54 @@ class WeddingCardApp {
       this.state.messageFontSize = 21;
       this.state.dateFontSize = 24;
       this.state.showBorderRing = true;
+    } else if (theme.layout === 'geometric-eucalyptus') {
+      this.state.textOffsetX = 0;
+      this.state.greetingText = 'Gracias por';
+      this.state.highlightText = 'acompañarnos';
+      this.state.messageText = 'Su presencia hizo este día aún más especial';
+      this.state.dateText = '19. 11. 2026';
+      this.state.namesFontSize = 32;
+      this.state.ampersandFontSize = 30;
+      this.state.greetingFontSize = 22;
+      this.state.highlightFontSize = 28;
+      this.state.messageFontSize = 19;
+      this.state.dateFontSize = 21;
+      this.state.namesFont = 'tenor-sans';
+      this.state.ampersandFont = 'cormorant';
+      this.state.greetingFont = 'alex-brush';
+      this.state.highlightFont = 'alex-brush';
+      this.state.messageFont = 'cormorant';
+      this.state.dateFont = 'cormorant';
+      this.state.namesColor = '#24201E';
+      this.state.highlightColor = '#24201E';
+      this.state.messageColor = '#302A27';
+      this.state.dateColor = '#24201E';
+      this.state.flourishColor = '#B5874A';
+      this.state.showBorderRing = false;
+    } else if (theme.layout === 'wild-lavender') {
+      this.state.textOffsetX = 14;
+      this.state.greetingText = 'Gracias por';
+      this.state.highlightText = 'acompañarnos';
+      this.state.messageText = 'Su presencia hizo este día aún más especial';
+      this.state.dateText = '19. 11. 2026';
+      this.state.namesFontSize = 36;
+      this.state.ampersandFontSize = 34;
+      this.state.greetingFontSize = 22;
+      this.state.highlightFontSize = 28;
+      this.state.messageFontSize = 19;
+      this.state.dateFontSize = 21;
+      this.state.namesFont = 'parisienne';
+      this.state.ampersandFont = 'parisienne';
+      this.state.greetingFont = 'parisienne';
+      this.state.highlightFont = 'parisienne';
+      this.state.messageFont = 'cormorant';
+      this.state.dateFont = 'cormorant';
+      this.state.namesColor = '#221E1D';
+      this.state.highlightColor = '#221E1D';
+      this.state.messageColor = '#302A27';
+      this.state.dateColor = '#221E1D';
+      this.state.flourishColor = '#2D2825';
+      this.state.showBorderRing = false;
     } else {
       this.state.textOffsetX = 0;
       this.state.greetingText = 'Muchas Gracias';
@@ -440,6 +504,7 @@ class WeddingCardApp {
       this.state.dateFontSize = 22;
     }
 
+    this.state.isCustomText = (theme.layout === 'monogram-gold' || theme.layout === 'minimal-seal');
     this.loadState(this.state);
   }
 
@@ -515,7 +580,24 @@ class WeddingCardApp {
     }
 
     this.updateHoleToggles();
+    this.updateModeIndicator();
     this.render();
+  }
+
+  updateModeIndicator() {
+    if (!this.modeBadgeIndicator || !this.modeDescText || !this.btnToggleCustomMode) return;
+    const isMonogram = (this.state.themeId === 'monogram-terracotta' || this.state.themeId === 'minimal-monogram');
+    if (!this.state.isCustomText && !isMonogram) {
+      this.modeBadgeIndicator.textContent = '💎 Ilustración 1:1 Original';
+      this.modeDescText.textContent = 'Caligrafía original pura de la Novia / Gemini (sin retoques ni cajas).';
+      this.btnToggleCustomMode.textContent = '✏️ Personalizar';
+      this.btnToggleCustomMode.className = 'btn btn-outline-gold btn-sm';
+    } else {
+      this.modeBadgeIndicator.textContent = '✏️ Modo Texto Personalizado';
+      this.modeDescText.textContent = 'Tipografía vectorial en vivo activa. Editando nombres y fechas.';
+      this.btnToggleCustomMode.textContent = '💎 Restaurar 1:1';
+      this.btnToggleCustomMode.className = 'btn btn-secondary btn-sm';
+    }
   }
 
   updateHoleToggles() {

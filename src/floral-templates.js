@@ -4,33 +4,93 @@ import { ASSETS } from './assets-data.js';
 export const THEMES = [
   {
     id: 'crescent-watercolor',
-    name: 'Acuarela Rosas Blush & Eucalipto (Canva Novia Fiel)',
-    description: 'Composición botánica nupcial auténtica en acuarela con rosas de jardín, eucalipto salvia y divisor de laurel con corazón de acuarela.',
+    name: 'Acuarela Rosas Blush & Eucalipto (Canva Novia)',
+    shortName: 'Rosas Blush & Eucalipto',
+    badge: 'Canva Novia',
+    description: 'Composición botánica nupcial idéntica a Canva con rosas blush, aro en pan de oro, divisor de hojas doradas con corazón y laurel de acuarela.',
     recommendedFonts: {
       names: 'alex-brush',
       ampersand: 'alex-brush',
-      greeting: 'cormorant',
+      greeting: 'alex-brush',
       highlight: 'alex-brush',
       body: 'cormorant',
       date: 'cormorant',
     },
     colors: {
-      bg: '#FFFFFF',
+      bg: '#FCFAF7',
       names: '#24201E',
-      ampersand: '#A47C48',
-      greeting: '#554C46',
+      ampersand: '#B5874A',
+      greeting: '#24201E',
       highlight: '#24201E',
       body: '#302A27',
       date: '#24201E',
-      flourish: '#A47C48',
+      flourish: '#B5874A',
       borderRing: 'transparent',
     },
     layout: 'crescent-authentic',
     defaultDate: '19. 11. 2026'
   },
   {
+    id: 'geometric-eucalyptus',
+    name: 'Marco Geométrico Dorado & Eucalipto (Variante 1)',
+    shortName: 'Geométrico & Eucalipto',
+    badge: 'Gemini Var 1',
+    description: 'Marco poligonal geométrico en líneas de oro con ramas de eucalipto en acuarela, corazón dorado con rama de olivo y tipografía clásica serif.',
+    recommendedFonts: {
+      names: 'tenor-sans',
+      ampersand: 'cormorant',
+      greeting: 'alex-brush',
+      highlight: 'alex-brush',
+      body: 'cormorant',
+      date: 'cormorant',
+    },
+    colors: {
+      bg: '#F4F4EF',
+      names: '#24201E',
+      ampersand: '#B5874A',
+      greeting: '#24201E',
+      highlight: '#24201E',
+      body: '#302A27',
+      date: '#24201E',
+      flourish: '#B5874A',
+      borderRing: 'transparent',
+    },
+    layout: 'geometric-eucalyptus',
+    defaultDate: '19. 11. 2026'
+  },
+  {
+    id: 'wild-lavender',
+    name: 'Lavanda Silvestre & Polvo de Oro (Variante 5)',
+    shortName: 'Lavanda Silvestre & Oro',
+    badge: 'Gemini Var 5',
+    description: 'Pradera botánica en acuarela con espigas de lavanda, margaritas silvestres, lluvia de polvo de oro y corazón doodle botánico.',
+    recommendedFonts: {
+      names: 'parisienne',
+      ampersand: 'parisienne',
+      greeting: 'parisienne',
+      highlight: 'parisienne',
+      body: 'cormorant',
+      date: 'cormorant',
+    },
+    colors: {
+      bg: '#F7F7F2',
+      names: '#221E1D',
+      ampersand: '#B5874A',
+      greeting: '#221E1D',
+      highlight: '#221E1D',
+      body: '#302A27',
+      date: '#221E1D',
+      flourish: '#2D2825',
+      borderRing: 'transparent',
+    },
+    layout: 'wild-lavender',
+    defaultDate: '19. 11. 2026'
+  },
+  {
     id: 'monogram-terracotta',
-    name: 'Sello Monograma Terracota & Pan de Oro (Canva Novia Fiel)',
+    name: 'Sello Monograma Terracota & Pan de Oro',
+    shortName: 'Sello Monograma Terracota',
+    badge: 'Editorial SM',
     description: 'Sello circular en terracota con monograma SM en pan de oro, doble aro dorado concéntrico y tipografía de alta costura Tenor Sans.',
     recommendedFonts: {
       names: 'tenor-sans',
@@ -57,6 +117,8 @@ export const THEMES = [
   {
     id: 'minimal-monogram',
     name: 'Editorial Terracota & Pan de Oro Minimalista',
+    shortName: 'Terracota Minimalista',
+    badge: 'Minimal SM',
     description: 'Lujo sobrio contemporáneo con sello repujado en terracota, tipografía editorial Tenor Sans y aro en pan de oro.',
     recommendedFonts: {
       names: 'tenor-sans',
@@ -78,58 +140,6 @@ export const THEMES = [
       borderRing: '#D4AF37',
     },
     layout: 'minimal-seal',
-    defaultDate: '19. 11. 2026'
-  },
-  {
-    id: 'full-wreath-watercolor',
-    name: 'Corona Botánica 360° en Acuarela',
-    description: 'Guirnalda circular completa envolvente de peonías y hojas de eucalipto en acuarela de alta definición.',
-    recommendedFonts: {
-      names: 'great-vibes',
-      ampersand: 'great-vibes',
-      greeting: 'cinzel',
-      highlight: 'great-vibes',
-      body: 'cormorant',
-      date: 'cinzel',
-    },
-    colors: {
-      bg: '#FCFAF7',
-      names: '#231F20',
-      ampersand: '#C59B27',
-      greeting: '#4A443F',
-      highlight: '#A45E54',
-      body: '#4A443F',
-      date: '#5E564F',
-      flourish: '#C59B27',
-      borderRing: '#EAE1D5',
-    },
-    layout: 'wreath-authentic',
-    defaultDate: '19. 11. 2026'
-  },
-  {
-    id: 'twin-bouquets-gold',
-    name: 'Doble Ramillete & Anillo de Oro Geométrico',
-    description: 'Doble anillo en pan de oro pulido con ramilletes de rosas blush en esquinas alternadas.',
-    recommendedFonts: {
-      names: 'pinyon-script',
-      ampersand: 'pinyon-script',
-      greeting: 'cinzel',
-      highlight: 'pinyon-script',
-      body: 'cormorant',
-      date: 'cinzel',
-    },
-    colors: {
-      bg: '#FFFFFF',
-      names: '#1F1E1D',
-      ampersand: '#C59B27',
-      greeting: '#3D3834',
-      highlight: '#9B5B53',
-      body: '#4F4842',
-      date: '#5E564F',
-      flourish: '#C59B27',
-      borderRing: '#D4AF37',
-    },
-    layout: 'twin-gold',
     defaultDate: '19. 11. 2026'
   }
 ];
@@ -173,63 +183,50 @@ export function getSvgDefs() {
   `;
 }
 
-// Renderers for each layout
-export function renderFloralBackground(layout, customColors = {}) {
-  const flourishColor = customColors.flourish || '#C28B59';
-
+// Renderers for each layout artwork background
+export function renderFloralBackground(layout, customColors = {}, isCustomText = false) {
   switch (layout) {
     case 'crescent-authentic':
-      // The authentic watercolor crescent from inspiration
+      // Pristine 1:1 Canva Novia Masterpiece OR clean template for custom text
+      const blushSrc = isCustomText ? ASSETS.crescentBlushPng : (ASSETS.crescentBlushMasterPng || ASSETS.crescentBlushPng);
       return `
-        <!-- Authentic Watercolor Crescent Layer -->
+        <!-- Authentic Crescent Blush Rose Masterpiece Template -->
         <g id="authentic-crescent-group">
-          <image href="${ASSETS.crescentPng}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
+          <image href="${blushSrc}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
+        </g>
+      `;
+
+    case 'geometric-eucalyptus':
+      // Pristine 1:1 Gemini Variant 1 Masterpiece OR clean template for custom text
+      const v1Src = isCustomText ? ASSETS.geometricEucalyptusPng : (ASSETS.geometricEucalyptusMasterPng || ASSETS.geometricEucalyptusPng);
+      return `
+        <!-- Geometric Gold Frame & Eucalyptus Template (Variant 1) -->
+        <g id="geometric-eucalyptus-group">
+          <image href="${v1Src}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
+        </g>
+      `;
+
+    case 'wild-lavender':
+      // Pristine 1:1 Gemini Variant 5 Masterpiece OR clean template for custom text
+      const v5Src = isCustomText ? ASSETS.wildLavenderPng : (ASSETS.wildLavenderMasterPng || ASSETS.wildLavenderPng);
+      return `
+        <!-- Wild Botanical Lavender & Daisies Template (Variant 5) -->
+        <g id="wild-lavender-group">
+          <image href="${v5Src}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
         </g>
       `;
 
     case 'monogram-gold':
-      // Terracotta SM Seal + Double Gold Ring (Exact proportions from reference photo)
+      // Terracotta SM Seal + Double Gold Ring
       return `
         <!-- Double Fine Gold Foil Concentric Rings -->
         <g id="monogram-gold-rings">
           <circle cx="250" cy="250" r="236" fill="none" stroke="url(#gold-foil)" stroke-width="1.8"/>
           <circle cx="250" cy="250" r="231" fill="none" stroke="url(#gold-foil)" stroke-width="0.8" opacity="0.75"/>
           
-          <!-- Authentic Terracotta SM Seal Medallion (Calibrated 68x68 at y=38) -->
+          <!-- Authentic Terracotta SM Seal Medallion -->
           <g filter="url(#seal-shadow)">
             <image href="${ASSETS.sealPng}" x="216" y="38" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
-          </g>
-        </g>
-      `;
-
-    case 'wreath-authentic':
-      // 360-degree watercolor wreath constructed from the authentic watercolor assets
-      return `
-        <g id="full-authentic-wreath">
-          <!-- Left Crescent -->
-          <image href="${ASSETS.crescentPng}" x="0" y="0" width="500" height="500" opacity="0.95"/>
-          <!-- Mirrored Right Crescent with subtle scale and rotation -->
-          <g transform="translate(500, 0) scale(-0.95, 0.95) translate(-15, 20)">
-            <image href="${ASSETS.crescentPng}" x="0" y="0" width="500" height="500" opacity="0.9"/>
-          </g>
-        </g>
-      `;
-
-    case 'twin-gold':
-      // Gold geometric circles with watercolor bouquets at corners
-      return `
-        <g id="twin-gold-group">
-          <circle cx="250" cy="250" r="234" fill="none" stroke="url(#gold-foil)" stroke-width="1.6"/>
-          <circle cx="250" cy="250" r="228" fill="none" stroke="url(#gold-foil)" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.7"/>
-
-          <!-- Top Left Bouquet Cluster -->
-          <g transform="translate(-40, -40) scale(0.68)">
-            <image href="${ASSETS.crescentPng}" x="0" y="0" width="500" height="500"/>
-          </g>
-
-          <!-- Bottom Right Bouquet Cluster -->
-          <g transform="translate(540, 540) rotate(180) scale(0.68)">
-            <image href="${ASSETS.crescentPng}" x="0" y="0" width="500" height="500"/>
           </g>
         </g>
       `;
@@ -249,88 +246,124 @@ export function renderFloralBackground(layout, customColors = {}) {
   }
 }
 
-// Romantic Top Flourish: ~ ♡ ~ (Calibrated from Bride's Inspiration)
+// Romantic Top Flourish: ~ ♡ ~
 export function renderTopHeartFlourish(x = 250, y = 108, color = '#A47C48') {
   return `
     <g id="top-heart-flourish" transform="translate(${x}, ${y})">
-      <!-- Left organic flourish wave -->
       <path d="M-42,0 C-30,-7 -18,6 -8,0" fill="none" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
-      <!-- Delicate heart center -->
-      <path d="M0,4 C-1.8,-0.5 -4.5,-1 -5.5,-3.8 C-6.8,-6.8 -3.5,-9.5 0,-6 C3.5,-9.5 6.8,-6.8 5.5,-3.8 C4.5,-1 1.8,-0.5 0,4 Z" 
-            transform="translate(0, -2) scale(0.9)" 
-            fill="${color}" stroke="${color}" stroke-width="0.5"/>
-      <!-- Right organic flourish wave -->
+      <path d="M-1.5,-4 C-3.5,-7 -7,-7 -7,-4 C-7,-1 -1.5,4 0,5.5 C1.5,4 7,-1 7,-4 C7,-7 3.5,-7 1.5,-4 Z" fill="${color}"/>
       <path d="M8,0 C18,6 30,-7 42,0" fill="none" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
     </g>
   `;
 }
 
-// High-end Flourish with delicate hollow heart
-export function renderDelicateHollowHeartDivider(x = 250, y = 180, color = '#777777', width = 180) {
-  const half = width / 2;
+// Delicate Hollow Heart Divider: — ♡ —
+export function renderDelicateHollowHeartDivider(x = 250, y = 188, color = '#B5874A') {
   return `
-    <g id="delicate-heart-divider" transform="translate(${x}, ${y})">
-      <!-- Left line -->
-      <line x1="${-half}" y1="0" x2="-16" y2="0" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
-      <!-- Hollow romantic heart -->
-      <path d="M0,4 C-1.8,0 -6,-1 -7.5,-4 C-9.2,-7.5 -5,-11 0,-6.5 C5,-11 9.2,-7.5 7.5,-4 C6,-1 1.8,0 0,4 Z" 
-            transform="translate(0, -2) scale(0.95)" 
-            fill="none" stroke="${color}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- Right line -->
-      <line x1="16" y1="0" x2="${half}" y2="0" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
+    <g id="heart-divider-gold" transform="translate(${x}, ${y})">
+      <line x1="-58" y1="0" x2="-14" y2="0" stroke="${color}" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M0,5.2 C-1.2,4 -6,-0.6 -6,-3.6 C-6,-6.2 -3,-6.2 0,-3.8 C3,-6.2 6,-6.2 6,-3.6 C6,-0.6 1.2,4 0,5.2 Z" 
+            fill="none" stroke="${color}" stroke-width="1.4" stroke-linejoin="round"/>
+      <line x1="14" y1="0" x2="58" y2="0" stroke="${color}" stroke-width="1.2" stroke-linecap="round"/>
     </g>
   `;
 }
 
-// Authentic Watercolor Laurel & Heart Divider (Full 304x97 Symmetrical Asset)
-export function renderWatercolorLaurelDivider(x = 250, y = 396, scale = 0.72) {
-  const w = 304 * scale;
-  const h = 97 * scale;
+// Hand-Drawn Doodle Heart with Leaf Twigs for Variant 5: 🌿 ♡ 🌿
+export function renderDoodleHeartFlourish(x = 264, y = 176, color = '#2D2825') {
   return `
-    <g id="watercolor-laurel-divider" transform="translate(${x - w / 2}, ${y - h / 2})">
-      <image href="${ASSETS.laurelPng}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet"/>
+    <g id="doodle-heart-flourish" transform="translate(${x}, ${y})">
+      <!-- Left Twig -->
+      <path d="M-38,0 C-26,-4 -18,2 -10,0" fill="none" stroke="${color}" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="-28" cy="-3" r="1.6" fill="${color}"/>
+      <circle cx="-19" cy="2" r="1.4" fill="${color}"/>
+
+      <!-- Whimsical Center Heart -->
+      <path d="M0,6 C-1.5,4.5 -7,-0.5 -7,-4 C-7,-7 -3.5,-7 0,-4.2 C3.5,-7 7,-7 7,-4 C7,-0.5 1.5,4.5 0,6 Z" 
+            fill="none" stroke="${color}" stroke-width="1.4" stroke-linejoin="round"/>
+
+      <!-- Right Twig -->
+      <path d="M10,0 C18,2 26,-4 38,0" fill="none" stroke="${color}" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="19" cy="2" r="1.4" fill="${color}"/>
+      <circle cx="28" cy="-3" r="1.6" fill="${color}"/>
     </g>
   `;
 }
 
-// Hole and Tagpin renderer
-export function renderHoleGuide({ showHole = false, showGuide = false, holeX = 250, holeY = 32, holeRadius = 16, showPin = false }) {
-  let content = '';
+// Gold Heart with Olive Sprig for Variant 1
+export function renderGoldHeartWithSprig(x = 250, y = 196) {
+  return `
+    <g id="gold-heart-sprig" transform="translate(${x}, ${y})">
+      <!-- Small Gold Heart -->
+      <path d="M-6,3.5 C-7,2.5 -11,-1 -11,-3.5 C-11,-5.5 -8.5,-5.5 -6,-3.5 C-3.5,-5.5 -1,-5.5 -1,-3.5 C-1,-1 -5,2.5 -6,3.5 Z" 
+            fill="url(#gold-foil)"/>
+      <!-- Right Olive Leaves -->
+      <path d="M0,0 C6,-3 14,-2 22,-1" fill="none" stroke="#7A8F76" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M6,-1 C8,-4 13,-4 13,-1 C13,2 8,2 6,-1 Z" fill="#7A8F76"/>
+      <path d="M14,-1.5 C16,-5 20,-4 19,-1 C18,2 15,1 14,-1.5 Z" fill="#95A68F"/>
+      <path d="M21,-1 C23,-3 26,-2 25,0 C24,2 22,1 21,-1 Z" fill="#84997E"/>
+    </g>
+  `;
+}
 
-  if (showGuide) {
-    content += `
-      <!-- Hole Safety Guide -->
-      <g id="hole-guide" opacity="0.8">
-        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius + 14}" fill="none" stroke="#E05D58" stroke-width="1.2" stroke-dasharray="4,4"/>
-        <text x="${holeX}" y="${holeY + holeRadius + 24}" font-family="'Montserrat', sans-serif" font-size="8" fill="#E05D58" text-anchor="middle" font-weight="600" letter-spacing="1">
-          ZONA SEGURA (3.5mm)
-        </text>
-      </g>
-    `;
-  }
+// Watercolor Laurel Bottom Divider with Pink Heart
+export function renderWatercolorLaurelDivider(x = 250, y = 410) {
+  return `
+    <g id="watercolor-laurel-bottom" transform="translate(${x}, ${y})">
+      <!-- Subtle Watercolor Leaflets (Left) -->
+      <path d="M-52,0 C-36,5 -20,-3 -8,0" fill="none" stroke="#8A9E88" stroke-width="1.1" stroke-linecap="round"/>
+      <ellipse cx="-38" cy="2" rx="4.5" ry="2.2" transform="rotate(-25, -38, 2)" fill="#8A9E88" opacity="0.85"/>
+      <ellipse cx="-25" cy="-1.5" rx="4" ry="2" transform="rotate(20, -25, -1.5)" fill="#688466" opacity="0.85"/>
+      <ellipse cx="-13" cy="1" rx="3.5" ry="1.8" transform="rotate(-15, -13, 1)" fill="#8A9E88" opacity="0.85"/>
 
-  if (showHole) {
-    content += `
-      <!-- Actual Punch Hole -->
-      <g id="punch-hole">
-        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius}" fill="#222222" opacity="0.95"/>
-        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius}" fill="none" stroke="#C59B27" stroke-width="1.5"/>
-      </g>
-    `;
-  }
+      <!-- Center Dusty Rose Watercolor Heart -->
+      <path d="M0,5 C-1.2,3.8 -6,-0.5 -6,-3.5 C-6,-6 -3,-6 0,-3.5 C3,-6 6,-6 6,-3.5 C6,-0.5 1.2,3.8 0,5 Z" 
+            fill="#B57277" opacity="0.9"/>
 
-  if (showPin) {
-    content += `
-      <!-- Decorative Brass Eyelet & Ribbon Preview -->
-      <g id="decorative-tagpin" filter="url(#soft-shadow)">
-        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius + 5}" fill="url(#pin-gold)" stroke="#8C6A18" stroke-width="1"/>
-        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius}" fill="#181514"/>
-        <ellipse cx="${holeX - 3}" cy="${holeY - 3}" rx="3.5" ry="1.8" fill="#FFFFFF" opacity="0.6"/>
-        <path d="M${holeX - 2},${holeY - 1} Q${holeX - 12},-15 ${holeX - 18},-35" fill="none" stroke="#EAE5DE" stroke-width="4" stroke-linecap="round"/>
-        <path d="M${holeX + 2},${holeY - 1} Q${holeX + 12},-15 ${holeX + 16},-35" fill="none" stroke="#DFD7CD" stroke-width="3.5" stroke-linecap="round"/>
-      </g>
-    `;
-  }
+      <!-- Subtle Watercolor Leaflets (Right) -->
+      <path d="M8,0 C20,-3 36,5 52,0" fill="none" stroke="#8A9E88" stroke-width="1.1" stroke-linecap="round"/>
+      <ellipse cx="13" cy="1" rx="3.5" ry="1.8" transform="rotate(15, 13, 1)" fill="#8A9E88" opacity="0.85"/>
+      <ellipse cx="25" cy="-1.5" rx="4" ry="2" transform="rotate(-20, 25, -1.5)" fill="#688466" opacity="0.85"/>
+      <ellipse cx="38" cy="2" rx="4.5" ry="2.2" transform="rotate(25, 38, 2)" fill="#8A9E88" opacity="0.85"/>
+    </g>
+  `;
+}
 
-  return content;
+// Hole Punch Guide and Pin
+export function renderHoleGuide(options = {}) {
+  const {
+    showHole = false,
+    showGuide = false,
+    holeX = 250,
+    holeY = 32,
+    holeRadius = 16,
+    showPin = false
+  } = options;
+
+  if (!showHole && !showGuide && !showPin) return '';
+
+  return `
+    <g id="hole-punch-layer">
+      <!-- Top Hole Guide (Dotted Cutline for Print Shop) -->
+      ${showGuide ? `
+        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius}" 
+                fill="none" stroke="#B08D57" stroke-width="1" stroke-dasharray="3,3" opacity="0.75"/>
+      ` : ''}
+
+      <!-- Clean Die-Cut Hole (Simulating physical punch cutout) -->
+      ${showHole ? `
+        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius}" fill="#2D2A28" opacity="0.95"/>
+        <circle cx="${holeX}" cy="${holeY}" r="${holeRadius + 1.2}" fill="none" stroke="#E6C875" stroke-width="1" opacity="0.85"/>
+      ` : ''}
+
+      <!-- Luxury Metallic Ribbon Pin (Pasador dorado decorativo) -->
+      ${showPin ? `
+        <g id="ribbon-pin-group">
+          <circle cx="${holeX}" cy="${holeY}" r="${holeRadius + 4}" fill="url(#pin-gold)" filter="url(#soft-shadow)"/>
+          <circle cx="${holeX}" cy="${holeY}" r="${holeRadius - 2}" fill="#26211E"/>
+          <circle cx="${holeX}" cy="${holeY}" r="${holeRadius - 4}" fill="none" stroke="#FFF0D0" stroke-width="0.8" opacity="0.6"/>
+        </g>
+      ` : ''}
+    </g>
+  `;
 }
