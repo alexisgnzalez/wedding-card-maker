@@ -371,24 +371,48 @@ class WeddingCardApp {
     }
 
     if (theme.layout === 'crescent-authentic') {
-      this.state.textOffsetX = 38;
+      this.state.textOffsetX = 32;
       this.state.greetingText = 'Gracias por';
       this.state.highlightText = 'acompañarnos';
       this.state.messageText = 'Su presencia hizo este día aún más especial';
       this.state.dateText = '19. 11. 2026';
-      this.state.namesFontSize = 39;
-      this.state.highlightFontSize = 25;
-      this.state.messageFontSize = 16.5;
+      this.state.namesFontSize = 44;
+      this.state.greetingFontSize = 22;
+      this.state.highlightFontSize = 38;
+      this.state.messageFontSize = 20.5;
+      this.state.dateFontSize = 23;
     } else if (theme.layout === 'monogram-gold') {
       this.state.textOffsetX = 0;
       this.state.greetingText = 'Muchas Gracias';
+      this.state.highlightText = 'acompañarnos';
       this.state.messageText = 'Por acompañarnos en nuestra boda, su presencia hizo este día especial';
       this.state.dateText = '19. 11. 2026';
-      this.state.namesFontSize = 33;
-      this.state.greetingFontSize = 28;
-      this.state.messageFontSize = 16;
+      this.state.namesFontSize = 38;
+      this.state.greetingFontSize = 42;
+      this.state.highlightFontSize = 38;
+      this.state.messageFontSize = 20.5;
+      this.state.dateFontSize = 24;
+    } else if (theme.layout === 'minimal-seal') {
+      this.state.textOffsetX = 0;
+      this.state.greetingText = 'Muchas Gracias';
+      this.state.highlightText = 'acompañarnos';
+      this.state.messageText = 'Por acompañarnos en nuestra boda, su presencia hizo este día especial';
+      this.state.dateText = '19. 11. 2026';
+      this.state.namesFontSize = 40;
+      this.state.greetingFontSize = 44;
+      this.state.highlightFontSize = 38;
+      this.state.messageFontSize = 21;
+      this.state.dateFontSize = 24;
     } else {
       this.state.textOffsetX = 0;
+      this.state.greetingText = 'Muchas Gracias';
+      this.state.messageText = 'Su presencia hizo este día aún más especial';
+      this.state.dateText = '19. 11. 2026';
+      this.state.namesFontSize = 42;
+      this.state.greetingFontSize = 34;
+      this.state.highlightFontSize = 36;
+      this.state.messageFontSize = 20;
+      this.state.dateFontSize = 22;
     }
 
     this.loadState(this.state);

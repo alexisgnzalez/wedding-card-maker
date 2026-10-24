@@ -1,19 +1,19 @@
-// Storage and design version management
+// Storage and design version management - Version 4 with Print-Calibrated Typography
 import { DEFAULT_CARD_STATE, generateCardSvg } from './card-generator.js';
 import { THEMES } from './floral-templates.js';
 
-const STORAGE_KEY = 'wedding_card_designs_v2';
+const STORAGE_KEY = 'wedding_card_designs_v4';
 
 export const PRESET_DESIGNS = [
   {
     id: 'preset-crescent-watercolor',
-    title: 'Opción 1: Acuarela Rosas & Eucalipto (Fiel a la Inspiración)',
+    title: 'Opción 1: Acuarela Rosas Blush & Eucalipto (Inspiración Original)',
     createdAt: new Date().toISOString(),
     isPreset: true,
     state: {
       ...DEFAULT_CARD_STATE,
       themeId: 'crescent-watercolor',
-      title: 'Acuarela Rosas & Eucalipto (Inspiración Original)',
+      title: 'Acuarela Rosas Blush & Eucalipto (Inspiración Original)',
       name1: 'Saray',
       ampersand: '&',
       name2: 'Michael',
@@ -23,25 +23,25 @@ export const PRESET_DESIGNS = [
       dateText: '19. 11. 2026',
       namesFont: 'alex-brush',
       ampersandFont: 'alex-brush',
-      greetingFont: 'alex-brush',
+      greetingFont: 'cormorant',
       highlightFont: 'alex-brush',
       messageFont: 'cormorant',
       dateFont: 'cormorant',
-      namesFontSize: 39,
-      ampersandFontSize: 32,
-      greetingFontSize: 25,
-      highlightFontSize: 25,
-      messageFontSize: 16.5,
-      dateFontSize: 18,
+      namesFontSize: 44,
+      ampersandFontSize: 38,
+      greetingFontSize: 22,
+      highlightFontSize: 38,
+      messageFontSize: 20.5,
+      dateFontSize: 23,
       bgColor: '#FFFFFF',
-      namesColor: '#2C2523',
-      ampersandColor: '#2C2523',
-      greetingColor: '#2C2523',
-      highlightColor: '#2C2523',
-      messageColor: '#423B37',
-      dateColor: '#2C2523',
-      flourishColor: '#7D736A',
-      textOffsetX: 38,
+      namesColor: '#24201E',
+      ampersandColor: '#A47C48',
+      greetingColor: '#554C46',
+      highlightColor: '#A47C48',
+      messageColor: '#302A27',
+      dateColor: '#24201E',
+      flourishColor: '#A47C48',
+      textOffsetX: 32,
       showHole: false,
       showGuide: false,
       showPin: false,
@@ -50,13 +50,13 @@ export const PRESET_DESIGNS = [
   },
   {
     id: 'preset-monogram-terracotta',
-    title: 'Opción 2: Sello Monograma Terracota & Pan de Oro',
+    title: 'Opción 2: Sello Monograma Terracota & Pan de Oro (Referencia Novia)',
     createdAt: new Date().toISOString(),
     isPreset: true,
     state: {
       ...DEFAULT_CARD_STATE,
       themeId: 'monogram-terracotta',
-      title: 'Sello Monograma Terracota & Pan de Oro',
+      title: 'Sello Monograma Terracota & Pan de Oro (Referencia Novia)',
       name1: 'Saray',
       ampersand: '&',
       name2: 'Michael',
@@ -64,23 +64,23 @@ export const PRESET_DESIGNS = [
       highlightText: 'acompañarnos',
       messageText: 'Por acompañarnos en nuestra boda, su presencia hizo este día especial',
       dateText: '19. 11. 2026',
-      namesFont: 'italiana',
-      ampersandFont: 'italiana',
+      namesFont: 'forum',
+      ampersandFont: 'forum',
       greetingFont: 'alex-brush',
       highlightFont: 'alex-brush',
       messageFont: 'alex-brush',
-      dateFont: 'italiana',
-      namesFontSize: 33,
-      ampersandFontSize: 26,
-      greetingFontSize: 28,
-      highlightFontSize: 25,
-      messageFontSize: 16,
-      dateFontSize: 17,
-      bgColor: '#FDFBF7',
+      dateFont: 'forum',
+      namesFontSize: 38,
+      ampersandFontSize: 34,
+      greetingFontSize: 42,
+      highlightFontSize: 38,
+      messageFontSize: 20.5,
+      dateFontSize: 24,
+      bgColor: '#FBF9F5',
       namesColor: '#8F6546',
       ampersandColor: '#8F6546',
-      greetingColor: '#A87948',
-      highlightColor: '#A87948',
+      greetingColor: '#B5874A',
+      highlightColor: '#B5874A',
       messageColor: '#8F6546',
       dateColor: '#8F6546',
       flourishColor: '#C59B27',
@@ -92,8 +92,51 @@ export const PRESET_DESIGNS = [
     }
   },
   {
+    id: 'preset-minimal-monogram',
+    title: 'Opción 3: Editorial Terracota & Pan de Oro Minimalista',
+    createdAt: new Date().toISOString(),
+    isPreset: true,
+    state: {
+      ...DEFAULT_CARD_STATE,
+      themeId: 'minimal-monogram',
+      title: 'Editorial Terracota & Pan de Oro Minimalista',
+      name1: 'Saray',
+      ampersand: '&',
+      name2: 'Michael',
+      greetingText: 'Muchas Gracias',
+      highlightText: 'acompañarnos',
+      messageText: 'Por acompañarnos en nuestra boda, su presencia hizo este día especial',
+      dateText: '19. 11. 2026',
+      namesFont: 'tenor-sans',
+      ampersandFont: 'tenor-sans',
+      greetingFont: 'alex-brush',
+      highlightFont: 'alex-brush',
+      messageFont: 'forum',
+      dateFont: 'tenor-sans',
+      namesFontSize: 40,
+      ampersandFontSize: 36,
+      greetingFontSize: 44,
+      highlightFontSize: 38,
+      messageFontSize: 21,
+      dateFontSize: 24,
+      bgColor: '#FAF8F4',
+      namesColor: '#26211F',
+      ampersandColor: '#B5874A',
+      greetingColor: '#B5874A',
+      highlightColor: '#B5874A',
+      messageColor: '#38312E',
+      dateColor: '#26211F',
+      flourishColor: '#B5874A',
+      textOffsetX: 0,
+      showHole: false,
+      showGuide: false,
+      showPin: false,
+      showBorderRing: true,
+    }
+  },
+  {
     id: 'preset-full-wreath-watercolor',
-    title: 'Opción 3: Corona Botánica 360° en Acuarela',
+    title: 'Opción 4: Corona Botánica 360° en Acuarela',
     createdAt: new Date().toISOString(),
     isPreset: true,
     state: {
@@ -103,9 +146,9 @@ export const PRESET_DESIGNS = [
       name1: 'Saray',
       ampersand: '&',
       name2: 'Michael',
-      greetingText: 'Gracias por',
+      greetingText: 'Muchas Gracias',
       highlightText: 'acompañarnos',
-      messageText: 'Tu presencia hizo este día aún más especial.',
+      messageText: 'Su presencia hizo este día aún más especial',
       dateText: '19. 11. 2026',
       namesFont: 'great-vibes',
       ampersandFont: 'great-vibes',
@@ -113,12 +156,12 @@ export const PRESET_DESIGNS = [
       highlightFont: 'great-vibes',
       messageFont: 'cormorant',
       dateFont: 'cinzel',
-      namesFontSize: 40,
-      ampersandFontSize: 30,
-      greetingFontSize: 18,
-      highlightFontSize: 27,
-      messageFontSize: 14.5,
-      dateFontSize: 15,
+      namesFontSize: 42,
+      ampersandFontSize: 34,
+      greetingFontSize: 32,
+      highlightFontSize: 34,
+      messageFontSize: 20,
+      dateFontSize: 22,
       bgColor: '#FCFAF7',
       namesColor: '#231F20',
       ampersandColor: '#C59B27',
@@ -136,7 +179,7 @@ export const PRESET_DESIGNS = [
   },
   {
     id: 'preset-twin-bouquets-gold',
-    title: 'Opción 4: Doble Ramillete & Anillo de Oro Geométrico',
+    title: 'Opción 5: Doble Ramillete & Anillo de Oro Geométrico',
     createdAt: new Date().toISOString(),
     isPreset: true,
     state: {
@@ -146,9 +189,9 @@ export const PRESET_DESIGNS = [
       name1: 'Saray',
       ampersand: '&',
       name2: 'Michael',
-      greetingText: 'Gracias por',
+      greetingText: 'Muchas Gracias',
       highlightText: 'acompañarnos',
-      messageText: 'Tu presencia hizo este día aún más especial.',
+      messageText: 'Su presencia hizo este día aún más especial',
       dateText: '19. 11. 2026',
       namesFont: 'pinyon-script',
       ampersandFont: 'pinyon-script',
@@ -157,11 +200,11 @@ export const PRESET_DESIGNS = [
       messageFont: 'cormorant',
       dateFont: 'cinzel',
       namesFontSize: 44,
-      ampersandFontSize: 32,
-      greetingFontSize: 17,
-      highlightFontSize: 28,
-      messageFontSize: 14,
-      dateFontSize: 14,
+      ampersandFontSize: 36,
+      greetingFontSize: 32,
+      highlightFontSize: 36,
+      messageFontSize: 20,
+      dateFontSize: 23,
       bgColor: '#FFFFFF',
       namesColor: '#1F1E1D',
       ampersandColor: '#C59B27',
@@ -176,49 +219,6 @@ export const PRESET_DESIGNS = [
       showPin: false,
       showBorderRing: false,
     }
-  },
-  {
-    id: 'preset-minimal-monogram',
-    title: 'Opción 5: Lujo Minimalista & Sello Nupcial',
-    createdAt: new Date().toISOString(),
-    isPreset: true,
-    state: {
-      ...DEFAULT_CARD_STATE,
-      themeId: 'minimal-monogram',
-      title: 'Lujo Minimalista & Sello Nupcial',
-      name1: 'Saray',
-      ampersand: '&',
-      name2: 'Michael',
-      greetingText: 'Muchas Gracias',
-      highlightText: 'acompañarnos',
-      messageText: 'Tu presencia hizo este día aún más especial.',
-      dateText: '19. 11. 2026',
-      namesFont: 'cinzel',
-      ampersandFont: 'alex-brush',
-      greetingFont: 'montserrat',
-      highlightFont: 'alex-brush',
-      messageFont: 'cormorant',
-      dateFont: 'montserrat',
-      namesFontSize: 34,
-      ampersandFontSize: 36,
-      greetingFontSize: 16,
-      highlightFontSize: 28,
-      messageFontSize: 14,
-      dateFontSize: 13,
-      bgColor: '#FAF8F5',
-      namesColor: '#1A1A1A',
-      ampersandColor: '#C59B27',
-      greetingColor: '#555555',
-      highlightColor: '#8A5D3B',
-      messageColor: '#404040',
-      dateColor: '#666666',
-      flourishColor: '#C59B27',
-      textOffsetX: 0,
-      showHole: false,
-      showGuide: false,
-      showPin: false,
-      showBorderRing: true,
-    }
   }
 ];
 
@@ -226,44 +226,50 @@ export function getSavedDesigns() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
-      saveAllDesigns(PRESET_DESIGNS);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(PRESET_DESIGNS));
       return PRESET_DESIGNS;
     }
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : PRESET_DESIGNS;
-  } catch (e) {
-    console.error('Error loading designs from storage', e);
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(PRESET_DESIGNS));
+      return PRESET_DESIGNS;
+    }
+    return parsed;
+  } catch (err) {
+    console.error('Error reading localStorage designs:', err);
     return PRESET_DESIGNS;
   }
 }
 
-export function saveAllDesigns(designs) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(designs));
-  } catch (e) {
-    console.error('Error saving designs to storage', e);
-  }
-}
+export function saveNewDesign(state, customTitle = null) {
+  const designs = getSavedDesigns();
+  const theme = THEMES.find(t => t.id === state.themeId) || THEMES[0];
+  const title = customTitle || `${theme.name} (Copia)`;
 
-export function saveNewDesign(state, customTitle) {
-  const current = getSavedDesigns();
-  const count = current.length + 1;
   const newDesign = {
-    id: `design-${Date.now()}`,
-    title: customTitle || `Variación ${count} - ${state.title || 'Personalizada'}`,
+    id: 'design-' + Date.now(),
+    title,
     createdAt: new Date().toISOString(),
     isPreset: false,
     state: { ...state }
   };
 
-  const updated = [newDesign, ...current];
-  saveAllDesigns(updated);
+  designs.unshift(newDesign);
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(designs));
+  } catch (err) {
+    console.error('Failed to save to localStorage:', err);
+  }
   return newDesign;
 }
 
-export function deleteDesign(id) {
-  const current = getSavedDesigns();
-  const updated = current.filter(d => d.id !== id);
-  saveAllDesigns(updated);
-  return updated;
+export function deleteDesign(designId) {
+  let designs = getSavedDesigns();
+  designs = designs.filter(d => d.id !== designId);
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(designs));
+  } catch (err) {
+    console.error('Failed to delete design:', err);
+  }
+  return designs;
 }

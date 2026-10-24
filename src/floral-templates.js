@@ -4,25 +4,25 @@ import { ASSETS } from './assets-data.js';
 export const THEMES = [
   {
     id: 'crescent-watercolor',
-    name: 'Acuarela Rosas Blush & Eucalipto (Fiel a la Inspiración)',
-    description: 'Composición botánica auténtica en acuarela con rosas de jardín, eucalipto salvia y divisor de laurel con corazón de acuarela.',
+    name: 'Acuarela Rosas Blush & Eucalipto (Inspiración Original)',
+    description: 'Composición botánica nupcial auténtica en acuarela con rosas de jardín, eucalipto salvia y divisor de laurel con corazón de acuarela.',
     recommendedFonts: {
       names: 'alex-brush',
       ampersand: 'alex-brush',
-      greeting: 'alex-brush',
+      greeting: 'cormorant',
       highlight: 'alex-brush',
       body: 'cormorant',
       date: 'cormorant',
     },
     colors: {
       bg: '#FFFFFF',
-      names: '#2C2523',
-      ampersand: '#2C2523',
-      greeting: '#2C2523',
-      highlight: '#2C2523',
-      body: '#423B37',
-      date: '#2C2523',
-      flourish: '#8A7F79',
+      names: '#24201E',
+      ampersand: '#A47C48',
+      greeting: '#554C46',
+      highlight: '#A47C48',
+      body: '#302A27',
+      date: '#24201E',
+      flourish: '#A47C48',
       borderRing: 'transparent',
     },
     layout: 'crescent-authentic',
@@ -30,28 +30,54 @@ export const THEMES = [
   },
   {
     id: 'monogram-terracotta',
-    name: 'Sello Monograma Terracota & Pan de Oro',
-    description: 'Sello circular en terracota con monograma SM en pan de oro repujado, doble aro dorado y tipografía editorial italiana.',
+    name: 'Sello Monograma Terracota & Pan de Oro (Referencia Novia)',
+    description: 'Sello circular en terracota con monograma SM en pan de oro, doble aro dorado concéntrico y tipografía romana Forum de alta gama.',
     recommendedFonts: {
-      names: 'italiana',
-      ampersand: 'italiana',
+      names: 'forum',
+      ampersand: 'forum',
       greeting: 'alex-brush',
       highlight: 'alex-brush',
       body: 'alex-brush',
-      date: 'italiana',
+      date: 'forum',
     },
     colors: {
-      bg: '#F9F7F2',
+      bg: '#FBF9F5',
       names: '#8F6546',
       ampersand: '#8F6546',
-      greeting: '#A87948',
-      highlight: '#A87948',
+      greeting: '#B5874A',
+      highlight: '#B5874A',
       body: '#8F6546',
       date: '#8F6546',
       flourish: '#C59B27',
       borderRing: '#C59B27',
     },
     layout: 'monogram-gold',
+    defaultDate: '19. 11. 2026'
+  },
+  {
+    id: 'minimal-monogram',
+    name: 'Editorial Terracota & Pan de Oro Minimalista',
+    description: 'Lujo sobrio contemporáneo con sello repujado en terracota, tipografía editorial Tenor Sans y aro en pan de oro.',
+    recommendedFonts: {
+      names: 'tenor-sans',
+      ampersand: 'tenor-sans',
+      greeting: 'alex-brush',
+      highlight: 'alex-brush',
+      body: 'forum',
+      date: 'tenor-sans',
+    },
+    colors: {
+      bg: '#FAF8F4',
+      names: '#26211F',
+      ampersand: '#B5874A',
+      greeting: '#B5874A',
+      highlight: '#B5874A',
+      body: '#38312E',
+      date: '#26211F',
+      flourish: '#B5874A',
+      borderRing: '#D4AF37',
+    },
+    layout: 'minimal-seal',
     defaultDate: '19. 11. 2026'
   },
   {
@@ -105,32 +131,6 @@ export const THEMES = [
     },
     layout: 'twin-gold',
     defaultDate: '19. 11. 2026'
-  },
-  {
-    id: 'minimal-monogram',
-    name: 'Elegancia Minimalista & Sello Nupcial',
-    description: 'Lujo sobrio contemporáneo con sello en pan de oro, tipografía romana imperial y divisor de laurel.',
-    recommendedFonts: {
-      names: 'cinzel',
-      ampersand: 'alex-brush',
-      greeting: 'montserrat',
-      highlight: 'alex-brush',
-      body: 'cormorant',
-      date: 'montserrat',
-    },
-    colors: {
-      bg: '#FAF8F5',
-      names: '#1A1A1A',
-      ampersand: '#C59B27',
-      greeting: '#555555',
-      highlight: '#8A5D3B',
-      body: '#404040',
-      date: '#666666',
-      flourish: '#C59B27',
-      borderRing: '#E6D7C3',
-    },
-    layout: 'minimal-seal',
-    defaultDate: '19. 11. 2026'
   }
 ];
 
@@ -146,16 +146,16 @@ export function getSvgDefs() {
         <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.25" flood-color="#542e20"/>
       </filter>
 
-      <!-- Multi-Stop Metallic Gold Foil Gradients -->
-      <linearGradient id="gold-foil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <!-- Multi-Stop Metallic Gold Foil Gradients (userSpaceOnUse for 100% stroke & line support) -->
+      <linearGradient id="gold-foil" gradientUnits="userSpaceOnUse" x1="40" y1="40" x2="460" y2="460">
         <stop offset="0%" stop-color="#EED79A"/>
-        <stop offset="30%" stop-color="#D4AF37"/>
-        <stop offset="55%" stop-color="#FFF3CE"/>
+        <stop offset="25%" stop-color="#D4AF37"/>
+        <stop offset="50%" stop-color="#FFF3CE"/>
         <stop offset="75%" stop-color="#AA7F1A"/>
-        <stop offset="100%" stop-color="#F7E2B0"/>
+        <stop offset="100%" stop-color="#E5C158"/>
       </linearGradient>
 
-      <linearGradient id="rose-gold-foil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="rose-gold-foil" gradientUnits="userSpaceOnUse" x1="40" y1="40" x2="460" y2="460">
         <stop offset="0%" stop-color="#F8D3C5"/>
         <stop offset="40%" stop-color="#D99B87"/>
         <stop offset="70%" stop-color="#FFF0EB"/>
@@ -188,16 +188,16 @@ export function renderFloralBackground(layout, customColors = {}) {
       `;
 
     case 'monogram-gold':
-      // Terracotta SM Seal + Double Gold Ring
+      // Terracotta SM Seal + Double Gold Ring (Exact proportions from reference photo)
       return `
         <!-- Double Fine Gold Foil Concentric Rings -->
         <g id="monogram-gold-rings">
           <circle cx="250" cy="250" r="236" fill="none" stroke="url(#gold-foil)" stroke-width="1.8"/>
-          <circle cx="250" cy="250" r="231" fill="none" stroke="url(#gold-foil)" stroke-width="0.75" opacity="0.75"/>
+          <circle cx="250" cy="250" r="231" fill="none" stroke="url(#gold-foil)" stroke-width="0.8" opacity="0.75"/>
           
-          <!-- Authentic Terracotta SM Seal Medallion -->
+          <!-- Authentic Terracotta SM Seal Medallion (Calibrated 68x68 at y=38) -->
           <g filter="url(#seal-shadow)">
-            <image href="${ASSETS.sealPng}" x="205" y="48" width="90" height="90" preserveAspectRatio="xMidYMid meet"/>
+            <image href="${ASSETS.sealPng}" x="216" y="38" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
       `;
@@ -239,34 +239,51 @@ export function renderFloralBackground(layout, customColors = {}) {
       // Minimalist Terracotta Monogram + Fine Line Ring
       return `
         <g id="minimal-monogram-group">
-          <circle cx="250" cy="250" r="236" fill="none" stroke="${flourishColor}" stroke-width="1.2" opacity="0.6"/>
+          <circle cx="250" cy="250" r="236" fill="none" stroke="url(#gold-foil)" stroke-width="1.6" opacity="0.75"/>
+          <circle cx="250" cy="250" r="231" fill="none" stroke="url(#gold-foil)" stroke-width="0.8" opacity="0.5"/>
           <g filter="url(#seal-shadow)">
-            <image href="${ASSETS.sealPng}" x="205" y="48" width="90" height="90" preserveAspectRatio="xMidYMid meet"/>
+            <image href="${ASSETS.sealPng}" x="216" y="44" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
       `;
   }
 }
 
+// Romantic Top Flourish: ~ ♡ ~ (Calibrated from Bride's Inspiration)
+export function renderTopHeartFlourish(x = 250, y = 108, color = '#A47C48') {
+  return `
+    <g id="top-heart-flourish" transform="translate(${x}, ${y})">
+      <!-- Left organic flourish wave -->
+      <path d="M-42,0 C-30,-7 -18,6 -8,0" fill="none" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
+      <!-- Delicate heart center -->
+      <path d="M0,4 C-1.8,-0.5 -4.5,-1 -5.5,-3.8 C-6.8,-6.8 -3.5,-9.5 0,-6 C3.5,-9.5 6.8,-6.8 5.5,-3.8 C4.5,-1 1.8,-0.5 0,4 Z" 
+            transform="translate(0, -2) scale(0.9)" 
+            fill="${color}" stroke="${color}" stroke-width="0.5"/>
+      <!-- Right organic flourish wave -->
+      <path d="M8,0 C18,6 30,-7 42,0" fill="none" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
+    </g>
+  `;
+}
+
 // High-end Flourish with delicate hollow heart
-export function renderDelicateHollowHeartDivider(x = 250, y = 188, color = '#777777', width = 140) {
+export function renderDelicateHollowHeartDivider(x = 250, y = 188, color = '#777777', width = 160) {
   const half = width / 2;
   return `
     <g id="delicate-heart-divider" transform="translate(${x}, ${y})">
       <!-- Left line -->
-      <line x1="${-half}" y1="0" x2="-14" y2="0" stroke="${color}" stroke-width="0.75" stroke-linecap="round"/>
+      <line x1="${-half}" y1="0" x2="-16" y2="0" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
       <!-- Hollow romantic heart -->
       <path d="M0,4 C-1.8,0 -6,-1 -7.5,-4 C-9.2,-7.5 -5,-11 0,-6.5 C5,-11 9.2,-7.5 7.5,-4 C6,-1 1.8,0 0,4 Z" 
-            transform="translate(0, -2) scale(0.85)" 
-            fill="none" stroke="${color}" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+            transform="translate(0, -2) scale(0.95)" 
+            fill="none" stroke="${color}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
       <!-- Right line -->
-      <line x1="14" y1="0" x2="${half}" y2="0" stroke="${color}" stroke-width="0.75" stroke-linecap="round"/>
+      <line x1="16" y1="0" x2="${half}" y2="0" stroke="${color}" stroke-width="1.3" stroke-linecap="round"/>
     </g>
   `;
 }
 
 // Authentic Watercolor Laurel & Heart Divider
-export function renderWatercolorLaurelDivider(x = 250, y = 422, scale = 0.85) {
+export function renderWatercolorLaurelDivider(x = 250, y = 422, scale = 0.88) {
   // laurel width 230, height 65
   const w = 230 * scale;
   const h = 65 * scale;

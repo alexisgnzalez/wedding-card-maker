@@ -6,10 +6,10 @@
   <title>Saray & Michael — Diseñador de Tarjetas Nupciales Circulares (5cm x 5cm)</title>
   <meta name="description" content="Taller interactivo de diseño y personalización de tarjetas circulares para boda de Saray y Michael. Exportación profesional en SVG, PNG y JPEG.">
   
-  <!-- Google Fonts Preconnect -->
+  <!-- Google Fonts Preconnect & Luxury Font Suite -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Alex+Brush&family=Great+Vibes&family=Pinyon+Script&family=Allura&family=Parisienne&family=Dancing+Script:wght@500;700&family=MonteCarlo&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600;700&family=Prata&family=Marcellus&family=Italiana&family=Montserrat:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Alex+Brush&family=Playball&family=Great+Vibes&family=Pinyon+Script&family=Allura&family=Parisienne&family=Dancing+Script:wght@500;700&family=MonteCarlo&family=Forum&family=Tenor+Sans&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600;700&family=Prata&family=Marcellus&family=Italiana&family=Montserrat:wght@400;500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="/src/index.css">
 </head>
@@ -202,10 +202,10 @@
             <div class="form-group" id="offset-x-container">
               <label class="form-label">
                 <span>Centrado Óptico Horizontal</span>
-                <span class="range-val" id="val-text-offset">24px</span>
+                <span class="range-val" id="val-text-offset">52px</span>
               </label>
               <div class="range-group">
-                <input type="range" id="input-text-offset" min="-40" max="60" value="24">
+                <input type="range" id="input-text-offset" min="-20" max="80" value="52">
               </div>
             </div>
           </div>
@@ -221,11 +221,11 @@
             </div>
             <div class="form-group">
               <label class="form-label">
-                <span>Tamaño de Nombres</span>
-                <span class="range-val" id="val-names-size">46px</span>
+                <span>Tamaño de Nombres (Recomendado 44-50px)</span>
+                <span class="range-val" id="val-names-size">48px</span>
               </label>
               <div class="range-group">
-                <input type="range" id="size-names" min="28" max="64" value="46">
+                <input type="range" id="size-names" min="28" max="64" value="48">
               </div>
             </div>
             <div class="form-group">
@@ -235,7 +235,7 @@
           </div>
 
           <div class="control-section">
-            <div class="section-title">Tipografía de "Gracias por"</div>
+            <div class="section-title">Tipografía del Titular / "Muchas Gracias"</div>
             <div class="form-group">
               <label class="form-label" for="font-greeting">Fuente</label>
               <select id="font-greeting" class="form-control font-selector"></select>
@@ -243,10 +243,10 @@
             <div class="form-group">
               <label class="form-label">
                 <span>Tamaño</span>
-                <span class="range-val" id="val-greeting-size">19px</span>
+                <span class="range-val" id="val-greeting-size">36px</span>
               </label>
               <div class="range-group">
-                <input type="range" id="size-greeting" min="12" max="28" value="19">
+                <input type="range" id="size-greeting" min="18" max="52" value="36">
               </div>
             </div>
           </div>
@@ -260,27 +260,27 @@
             <div class="form-group">
               <label class="form-label">
                 <span>Tamaño</span>
-                <span class="range-val" id="val-highlight-size">32px</span>
+                <span class="range-val" id="val-highlight-size">38px</span>
               </label>
               <div class="range-group">
-                <input type="range" id="size-highlight" min="20" max="44" value="32">
+                <input type="range" id="size-highlight" min="20" max="54" value="38">
               </div>
             </div>
           </div>
 
           <div class="control-section">
-            <div class="section-title">Tipografía del Mensaje</div>
+            <div class="section-title">Tipografía del Mensaje de Agradecimiento</div>
             <div class="form-group">
               <label class="form-label" for="font-message">Fuente</label>
               <select id="font-message" class="form-control font-selector"></select>
             </div>
             <div class="form-group">
               <label class="form-label">
-                <span>Tamaño</span>
-                <span class="range-val" id="val-message-size">14.5px</span>
+                <span>Tamaño (Mínimo 19px para lectura 5cm)</span>
+                <span class="range-val" id="val-message-size">20.5px</span>
               </label>
               <div class="range-group">
-                <input type="range" id="size-message" min="10" max="22" step="0.5" value="14.5">
+                <input type="range" id="size-message" min="16" max="30" step="0.5" value="20.5">
               </div>
             </div>
           </div>
@@ -293,11 +293,11 @@
             </div>
             <div class="form-group">
               <label class="form-label">
-                <span>Tamaño</span>
-                <span class="range-val" id="val-date-size">13px</span>
+                <span>Tamaño de Fecha</span>
+                <span class="range-val" id="val-date-size">23px</span>
               </label>
               <div class="range-group">
-                <input type="range" id="size-date" min="9" max="20" value="13">
+                <input type="range" id="size-date" min="16" max="32" value="23">
               </div>
             </div>
           </div>
