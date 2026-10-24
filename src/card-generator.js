@@ -1,61 +1,57 @@
-// Core SVG Wedding Card generator
-import { getFontFamily } from './fonts.js';
-import { getSvgDefs, renderFloralBackground, renderTopHeartFlourish, renderBottomLaurelDivider, renderHoleGuide, THEMES } from './floral-templates.js';
+// Luxury Wedding Card Master Generator
+import { getFontFamily, getGoogleFontsUrl } from './fonts.js';
+import { getSvgDefs, renderFloralBackground, renderDelicateHollowHeartDivider, renderWatercolorLaurelDivider, renderHoleGuide, THEMES } from './floral-templates.js';
 
 export const DEFAULT_CARD_STATE = {
-  // Theme & Layout
-  themeId: 'crescent-blush',
-  
+  themeId: 'crescent-watercolor',
+  title: 'Acuarela Rosas & Eucalipto (Fiel a la Inspiración)',
+
   // Text Content
-  namesText: 'Saray & Michael',
   name1: 'Saray',
   ampersand: '&',
   name2: 'Michael',
   greetingText: 'Gracias por',
   highlightText: 'acompañarnos',
   messageText: 'Tu presencia hizo este día aún más especial.',
-  dateText: '24 · Noviembre · 2026',
-  
-  // Font Styles
+  dateText: '19. 11. 2026',
+
+  // Typography
   namesFont: 'alex-brush',
   ampersandFont: 'alex-brush',
-  greetingFont: 'cormorant',
+  greetingFont: 'alex-brush',
   highlightFont: 'alex-brush',
   messageFont: 'cormorant',
-  dateFont: 'montserrat',
+  dateFont: 'cormorant',
 
-  // Font Sizes (in SVG units)
-  namesFontSize: 46,
-  ampersandFontSize: 36,
-  greetingFontSize: 19,
-  highlightFontSize: 32,
-  messageFontSize: 14.5,
-  dateFontSize: 13,
+  // Font Sizes
+  namesFontSize: 39,
+  ampersandFontSize: 32,
+  greetingFontSize: 25,
+  highlightFontSize: 25,
+  messageFontSize: 16.5,
+  dateFontSize: 18,
 
   // Colors
-  bgColor: '#FAF8F5',
+  bgColor: '#FFFFFF',
   namesColor: '#2C2523',
-  ampersandColor: '#C28B59',
-  greetingColor: '#3A3430',
-  highlightColor: '#B87B4C',
-  messageColor: '#524B45',
-  dateColor: '#6B625A',
-  flourishColor: '#C28B59',
-  borderStrokeColor: '#EDE5DC',
-  showBorderRing: true,
+  ampersandColor: '#2C2523',
+  greetingColor: '#2C2523',
+  highlightColor: '#2C2523',
+  messageColor: '#423B37',
+  dateColor: '#2C2523',
+  flourishColor: '#7D736A',
+  borderStrokeColor: '#D4AF37',
+  showBorderRing: false,
 
-  // Layout & Alignment
-  textOffsetX: 25, // default slight offset for crescent theme to balance florals
-  
-  // Hole & Tagpin Settings
+  // Alignment
+  textOffsetX: 38, // horizontal offset for crescent layout to center optically on the right
+
+  // Hole Guide Settings
   showHole: false,
   showGuide: false,
   showPin: false,
-  holeY: 35,
-  holeRadius: 16, // ~3.2mm in 50mm card
-  
-  // Custom Saved Title
-  title: 'Variación 1 - Media Luna Acuarela'
+  holeY: 32,
+  holeRadius: 16,
 };
 
 export function generateCardSvg(state) {
@@ -69,22 +65,115 @@ export function generateCardSvg(state) {
   const messageFamily = getFontFamily(s.messageFont);
   const dateFamily = getFontFamily(s.dateFont);
 
-  // Layout offsets: in crescent theme, shift center slightly right (+22px) to balance lush florals on left
-  const centerX = currentTheme.layout === 'crescent' ? (250 + (s.textOffsetX ?? 22)) : 250;
+  const fontUrl = getGoogleFontsUrl();
 
-  // Vertical balance: adjust gently if hole/pin is enabled
-  const hasTopHole = s.showHole || s.showPin || s.showGuide;
-  const topFlourishY = hasTopHole ? 98 : 90;
-  const namesY = hasTopHole ? 150 : 144;
-  const greetingY = hasTopHole ? 202 : 198;
-  const highlightY = hasTopHole ? 242 : 238;
-  const heartDotY = hasTopHole ? 268 : 264;
-  const messageY = hasTopHole ? 302 : 298;
-  const dateFlourishY = hasTopHole ? 376 : 372;
-  const dateY = hasTopHole ? 404 : 400;
+  // Layout calculations
+  const isCrescent = currentTheme.layout === 'crescent-authentic';
+  const isMonogram = currentTheme.layout === 'monogram-gold' || currentTheme.layout === 'minimal-seal';
 
-  // Split names if ampersand has custom styling/color
-  const hasSplitNames = s.name1 && s.name2;
+  const centerX = isCrescent ? (250 + (s.textOffsetX ?? 38)) : 250;
+
+  // Render text layout depending on theme
+  let textGroupContent = '';
+
+  if (isMonogram) {
+    // Monogram & Gold Layout (like WhatsApp .51)
+    const greetingY = 175;
+    const namesY = 226;
+    const messageY = 288;
+    const dateY = 376;
+
+    textGroupContent = `
+      <!-- Greeting: "Muchas Gracias" -->
+      <text x="${centerX}" y="${greetingY}" 
+            font-family="${greetingFamily}" 
+            font-size="${s.greetingFontSize + 6}" 
+            fill="${s.greetingColor}" 
+            text-anchor="middle">
+        ${s.greetingText === 'Gracias por' ? 'Muchas Gracias' : s.greetingText}
+      </text>
+
+      <!-- Names: "Saray & Michael" in Luxury Serif -->
+      <text x="${centerX}" y="${namesY}" text-anchor="middle">
+        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="1">${s.name1}</tspan>
+        <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}"> ${s.ampersand} </tspan>
+        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="1">${s.name2}</tspan>
+      </text>
+
+      <!-- Message in cursive -->
+      <g id="message-group" text-anchor="middle">
+        ${renderWrappedMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor, 1.45)}
+      </g>
+
+      <!-- Date with fine gold divider lines: —— 19. 11. 2026 —— -->
+      <g id="date-group" text-anchor="middle">
+        <line x1="${centerX - 105}" y1="${dateY - 5}" x2="${centerX - 50}" y2="${dateY - 5}" stroke="${s.flourishColor}" stroke-width="0.8"/>
+        <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="2">
+          ${s.dateText}
+        </text>
+        <line x1="${centerX + 50}" y1="${dateY - 5}" x2="${centerX + 105}" y2="${dateY - 5}" stroke="${s.flourishColor}" stroke-width="0.8"/>
+      </g>
+    `;
+  } else {
+    // Faithful Crescent Layout (like WhatsApp copy & bride inspiration)
+    const hasTopHole = s.showHole || s.showPin || s.showGuide;
+    const namesY = hasTopHole ? 168 : 158;
+    const dividerY = hasTopHole ? 198 : 188;
+    const greetingY = hasTopHole ? 244 : 234;
+    const messageY = hasTopHole ? 302 : 292;
+    const dateY = hasTopHole ? 376 : 368;
+    const laurelY = hasTopHole ? 418 : 410;
+
+    // Check if greeting has single or separated highlight
+    const combinedGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
+
+    textGroupContent = `
+      <!-- Names: "Saray & Michael" in flowing script -->
+      <text x="${centerX}" y="${namesY}" text-anchor="middle">
+        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}">${s.name1}</tspan>
+        <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}"> ${s.ampersand} </tspan>
+        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}">${s.name2}</tspan>
+      </text>
+
+      <!-- Fine Line with Hollow Heart Divider: — ♡ — -->
+      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 130)}
+
+      <!-- Subtitle: "Gracias por acompañarnos" -->
+      ${combinedGreeting ? `
+        <text x="${centerX}" y="${greetingY}" font-family="${highlightFamily}" font-size="${s.highlightFontSize}" fill="${s.highlightColor}" text-anchor="middle">
+          Gracias por acompañarnos
+        </text>
+      ` : `
+        <text x="${centerX}" y="${greetingY - 14}" font-family="${greetingFamily}" font-size="${s.greetingFontSize}" fill="${s.greetingColor}" text-anchor="middle">
+          ${s.greetingText}
+        </text>
+        <text x="${centerX}" y="${greetingY + 14}" font-family="${highlightFamily}" font-size="${s.highlightFontSize}" fill="${s.highlightColor}" text-anchor="middle">
+          ${s.highlightText}
+        </text>
+      `}
+
+      <!-- Emotive Body Message: "Tu presencia hizo este día aún más especial" -->
+      <g id="message-group" text-anchor="middle">
+        ${renderWrappedMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor, 1.35)}
+      </g>
+
+      <!-- Date: "19. 11. 2026" -->
+      <text id="date-text" 
+            x="${centerX}" 
+            y="${dateY}" 
+            font-family="${dateFamily}" 
+            font-size="${s.dateFontSize}" 
+            fill="${s.dateColor}" 
+            letter-spacing="1.8" 
+            text-anchor="middle"
+            font-weight="500">
+        ${s.dateText}
+      </text>
+
+      <!-- Authentic Watercolor Laurel Sprig with Dusty Pink Heart -->
+      ${renderWatercolorLaurelDivider(centerX, laurelY, 0.82)}
+    `;
+  }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -94,8 +183,14 @@ export function generateCardSvg(state) {
      shape-rendering="geometricPrecision" 
      text-rendering="geometricPrecision">
   ${getSvgDefs()}
+  <defs>
+    <style>
+      @import url('${fontUrl}');
+      text { text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }
+    </style>
+  </defs>
 
-  <!-- Circular Die-cut Mask & Background -->
+  <!-- Circular Die-cut Mask & Background Base -->
   <clipPath id="circle-cutout">
     <circle cx="250" cy="250" r="248"/>
   </clipPath>
@@ -106,89 +201,20 @@ export function generateCardSvg(state) {
 
     <!-- Optional Decorative Inner Border Ring -->
     ${s.showBorderRing ? `
-      <circle cx="250" cy="250" r="240" fill="none" stroke="${s.borderStrokeColor}" stroke-width="1.2" opacity="0.75"/>
-      <circle cx="250" cy="250" r="236" fill="none" stroke="${s.borderStrokeColor}" stroke-width="0.6" stroke-dasharray="3,3" opacity="0.6"/>
+      <circle cx="250" cy="250" r="238" fill="none" stroke="${s.borderStrokeColor}" stroke-width="1.2" opacity="0.8"/>
+      <circle cx="250" cy="250" r="234" fill="none" stroke="${s.borderStrokeColor}" stroke-width="0.6" stroke-dasharray="3,3" opacity="0.6"/>
     ` : ''}
 
-    <!-- Botanical Floral Artwork Layer -->
+    <!-- Botanical Floral Artwork Layer (Authentic High-Res Watercolor) -->
     ${renderFloralBackground(currentTheme.layout, { flourish: s.flourishColor })}
 
-    <!-- Top Romantic Flourish with Heart -->
-    ${renderTopHeartFlourish(topFlourishY, s.flourishColor)}
-
-    <!-- Names Section: "Saray & Michael" -->
-    <g id="names-group" text-anchor="middle">
-      ${hasSplitNames ? `
-        <text x="${centerX}" y="${namesY}">
-          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${s.name1}</tspan>
-          <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${s.ampersand} </tspan>
-          <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${s.name2}</tspan>
-        </text>
-      ` : `
-        <text x="${centerX}" y="${namesY}" font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}">
-          ${s.namesText}
-        </text>
-      `}
+    <!-- Typography Layer -->
+    <g id="typography-layer">
+      ${textGroupContent}
     </g>
-
-    <!-- Mini Accent Dot/Heart under names -->
-    <circle cx="${centerX}" cy="${namesY + 18}" r="2.5" fill="${s.flourishColor}" opacity="0.85"/>
-    <line x1="${centerX - 35}" y1="${namesY + 18}" x2="${centerX - 8}" y2="${namesY + 18}" stroke="${s.flourishColor}" stroke-width="0.8" opacity="0.6"/>
-    <line x1="${centerX + 8}" y1="${namesY + 18}" x2="${centerX + 35}" y2="${namesY + 18}" stroke="${s.flourishColor}" stroke-width="0.8" opacity="0.6"/>
-
-    <!-- Greeting Section: "Gracias por" -->
-    <text id="greeting-text" 
-          x="${centerX}" 
-          y="${greetingY}" 
-          font-family="${greetingFamily}" 
-          font-size="${s.greetingFontSize}" 
-          fill="${s.greetingColor}" 
-          letter-spacing="1.5" 
-          text-anchor="middle"
-          font-weight="400">
-      ${s.greetingText}
-    </text>
-
-    <!-- Highlighted Calligraphy: "acompañarnos" -->
-    <text id="highlight-text" 
-          x="${centerX}" 
-          y="${highlightY}" 
-          font-family="${highlightFamily}" 
-          font-size="${s.highlightFontSize}" 
-          fill="${s.highlightColor}" 
-          text-anchor="middle"
-          font-weight="normal">
-      ${s.highlightText}
-    </text>
-
-    <!-- Tiny Heart under acompañarnos -->
-    <path transform="translate(${centerX}, ${heartDotY}) scale(0.65)"
-          d="M0,-2 C-1.8,-6.5 -7.5,-7.5 -9.5,-3 C-11.5,1.5 -5,7 0,11.5 C5,7 11.5,1.5 9.5,-3 C7.5,-7.5 1.8,-6.5 0,-2 Z" 
-          fill="${s.flourishColor}" opacity="0.75"/>
-
-    <!-- Thank you Message / Body: "Tu presencia hizo este día aún más especial." -->
-    <g id="message-group" text-anchor="middle">
-      ${renderWrappedMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
-    </g>
-
-    <!-- Date Divider with Laurels & Heart -->
-    ${renderBottomLaurelDivider(dateFlourishY, s.flourishColor)}
-
-    <!-- Date: "24 · Noviembre · 2026" -->
-    <text id="date-text" 
-          x="${centerX}" 
-          y="${dateY}" 
-          font-family="${dateFamily}" 
-          font-size="${s.dateFontSize}" 
-          fill="${s.dateColor}" 
-          letter-spacing="2.2" 
-          text-anchor="middle"
-          font-weight="500">
-      ${s.dateText}
-    </text>
   </g>
 
-  <!-- Hole Punch Guide & Tagpin Layer (Can be toggled or exported) -->
+  <!-- Hole Punch Guide & Tagpin Layer -->
   ${renderHoleGuide({
     showHole: s.showHole,
     showGuide: s.showGuide,
@@ -197,22 +223,19 @@ export function generateCardSvg(state) {
     holeRadius: s.holeRadius
   })}
 
-  <!-- Outer Die-Cut Circular Cutline (Clean subtle guideline) -->
-  <circle cx="250" cy="250" r="249" fill="none" stroke="#D8CFC4" stroke-width="0.8" opacity="0.5"/>
+  <!-- Outer Die-Cut Circular Cutline (Subtle hairline for print guidance) -->
+  <circle cx="250" cy="250" r="249" fill="none" stroke="#D8CFC4" stroke-width="0.8" opacity="0.45"/>
 </svg>`;
 }
 
 // Helper to format/wrap multi-line message in SVG with fine typography
-function renderWrappedMessage(text, x, startY, fontSize, fontFamily, color) {
+function renderWrappedMessage(text, x, startY, fontSize, fontFamily, color, lineGap = 1.35) {
   if (!text) return '';
-  
-  // If text already has newline or is short enough
   const words = text.split(' ');
   if (words.length <= 4) {
     return `<text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-style="italic">${text}</text>`;
   }
 
-  // Break gracefully into two balanced lines for circular aesthetic
   const mid = Math.ceil(words.length / 2);
   const line1 = words.slice(0, mid).join(' ');
   const line2 = words.slice(mid).join(' ');
@@ -220,7 +243,7 @@ function renderWrappedMessage(text, x, startY, fontSize, fontFamily, color) {
   return `
     <text x="${x}" y="${startY}" font-family="${fontFamily}" font-size="${fontSize}" fill="${color}" font-style="italic">
       <tspan x="${x}" dy="0">${line1}</tspan>
-      <tspan x="${x}" dy="${fontSize * 1.35}">${line2}</tspan>
+      <tspan x="${x}" dy="${fontSize * lineGap}">${line2}</tspan>
     </text>
   `;
 }

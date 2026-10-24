@@ -352,7 +352,8 @@ class WeddingCardApp {
     // Apply recommended theme colors & fonts
     if (theme.recommendedFonts) {
       if (theme.recommendedFonts.names) this.state.namesFont = theme.recommendedFonts.names;
-      if (theme.recommendedFonts.subtitle) this.state.greetingFont = theme.recommendedFonts.subtitle;
+      if (theme.recommendedFonts.ampersand) this.state.ampersandFont = theme.recommendedFonts.ampersand;
+      if (theme.recommendedFonts.greeting) this.state.greetingFont = theme.recommendedFonts.greeting;
       if (theme.recommendedFonts.highlight) this.state.highlightFont = theme.recommendedFonts.highlight;
       if (theme.recommendedFonts.body) this.state.messageFont = theme.recommendedFonts.body;
       if (theme.recommendedFonts.date) this.state.dateFont = theme.recommendedFonts.date;
@@ -362,13 +363,34 @@ class WeddingCardApp {
       if (theme.colors.bg) this.state.bgColor = theme.colors.bg;
       if (theme.colors.names) this.state.namesColor = theme.colors.names;
       if (theme.colors.ampersand) this.state.ampersandColor = theme.colors.ampersand;
+      if (theme.colors.greeting) this.state.greetingColor = theme.colors.greeting;
       if (theme.colors.highlight) this.state.highlightColor = theme.colors.highlight;
       if (theme.colors.body) this.state.messageColor = theme.colors.body;
       if (theme.colors.date) this.state.dateColor = theme.colors.date;
       if (theme.colors.flourish) this.state.flourishColor = theme.colors.flourish;
     }
 
-    this.state.textOffsetX = theme.layout === 'crescent' ? 24 : 0;
+    if (theme.layout === 'crescent-authentic') {
+      this.state.textOffsetX = 38;
+      this.state.greetingText = 'Gracias por';
+      this.state.highlightText = 'acompañarnos';
+      this.state.messageText = 'Su presencia hizo este día aún más especial';
+      this.state.dateText = '19. 11. 2026';
+      this.state.namesFontSize = 39;
+      this.state.highlightFontSize = 25;
+      this.state.messageFontSize = 16.5;
+    } else if (theme.layout === 'monogram-gold') {
+      this.state.textOffsetX = 0;
+      this.state.greetingText = 'Muchas Gracias';
+      this.state.messageText = 'Por acompañarnos en nuestra boda, su presencia hizo este día especial';
+      this.state.dateText = '19. 11. 2026';
+      this.state.namesFontSize = 33;
+      this.state.greetingFontSize = 28;
+      this.state.messageFontSize = 16;
+    } else {
+      this.state.textOffsetX = 0;
+    }
+
     this.loadState(this.state);
   }
 
@@ -381,11 +403,11 @@ class WeddingCardApp {
     this.inputName2.value = this.state.name2 || 'Michael';
     this.inputGreeting.value = this.state.greetingText || 'Gracias por';
     this.inputHighlight.value = this.state.highlightText || 'acompañarnos';
-    this.inputMessage.value = this.state.messageText || 'Tu presencia hizo este día aún más especial.';
-    this.inputDate.value = this.state.dateText || '24 · Noviembre · 2026';
+    this.inputMessage.value = this.state.messageText || 'Su presencia hizo este día aún más especial';
+    this.inputDate.value = this.state.dateText || '19. 11. 2026';
 
-    this.selectTheme.value = this.state.themeId || 'crescent-blush';
-    this.inputTextOffset.value = this.state.textOffsetX ?? 24;
+    this.selectTheme.value = this.state.themeId || 'crescent-watercolor';
+    this.inputTextOffset.value = this.state.textOffsetX ?? 38;
     this.valTextOffset.textContent = `${this.inputTextOffset.value}px`;
 
     // Fonts

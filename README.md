@@ -36,13 +36,13 @@ Aplicación interactiva y generador vectorial de tarjetas de recuerdo nupciales 
 
 ---
 
-## 📂 Variaciones Incluidas en `designs/`
+## 📂 Variaciones de Alta Gama en `designs/`
 
-1. [`01-crescent-blush.svg`](designs/01-crescent-blush.svg): **Media Luna Rosas & Eucalipto (Inspiración Original)** — Fiel a la curvatura lateral de la foto de referencia con balance óptico central.
-2. [`02-full-wreath.svg`](designs/02-full-wreath.svg): **Corona Botánica Completa** — Guirnalda circular 360° que enmarca los nombres.
-3. [`03-twin-bouquets.svg`](designs/03-twin-bouquets.svg): **Doble Ramillete & Anillo Dorado** — Líneas geométricas en pan de oro con flores en esquinas opuestas.
-4. [`04-arch-garden.svg`](designs/04-arch-garden.svg): **Arco Botánico Superior** — Corona floral superior con hojas de eucalipto en caída.
-5. [`05-minimal-crest.svg`](designs/05-minimal-crest.svg): **Elegancia Minimalista & Monograma** — Laurel dorado sobrio y estética editorial contemporánea.
+1. [`01-crescent-watercolor.svg`](designs/01-crescent-watercolor.svg): **Acuarela Rosas Blush & Eucalipto (Fiel a la Inspiración)** — Composición botánica idéntica a la referencia de la novia con rosas de jardín en acuarela, divisor de corazón sutil y laurel inferior con corazón de acuarela.
+2. [`02-monogram-terracotta.svg`](designs/02-monogram-terracotta.svg): **Sello Monograma Terracota & Pan de Oro** — Sello circular nupcial en terracota con monograma `SM` en oro repujado, doble aro fino y tipografía italiana editorial.
+3. [`03-full-wreath-watercolor.svg`](designs/03-full-wreath-watercolor.svg): **Corona Botánica 360° en Acuarela** — Guirnalda circular envolvente con flora botánica de alta fidelidad.
+4. [`04-twin-bouquets-gold.svg`](designs/04-twin-bouquets-gold.svg): **Doble Ramillete & Anillo de Oro Geométrico** — Doble anillo en pan de oro con ramilletes de rosas en esquinas alternadas.
+5. [`05-minimal-monogram.svg`](designs/05-minimal-monogram.svg): **Lujo Minimalista & Sello Nupcial** — Elegancia contemporánea con sello dorado y tipografía imperial.
 
 ---
 
