@@ -31,20 +31,20 @@ export const DEFAULT_CARD_STATE = {
   messageFont: 'cormorant',
   dateFont: 'cormorant',
 
-  // Font Sizes Calibrated for 5cm (50mm) Circular Print (Minimum 7.5pt - 8.5pt in print)
-  namesFontSize: 44,
-  ampersandFontSize: 38,
+  // Font Sizes Calibrated for 5cm (50mm) Circular Print (Matching Canva Reference WhatsApp .52 copy)
+  namesFontSize: 38,
+  ampersandFontSize: 34,
   greetingFontSize: 22,
-  highlightFontSize: 38,
-  messageFontSize: 20.5,
-  dateFontSize: 23,
+  highlightFontSize: 26,
+  messageFontSize: 19,
+  dateFontSize: 22,
 
   // Colors
   bgColor: '#FFFFFF',
   namesColor: '#24201E',
   ampersandColor: '#A47C48',
   greetingColor: '#554C46',
-  highlightColor: '#A47C48',
+  highlightColor: '#24201E',
   messageColor: '#302A27',
   dateColor: '#24201E',
   flourishColor: '#A47C48',
@@ -52,7 +52,7 @@ export const DEFAULT_CARD_STATE = {
   showBorderRing: false,
 
   // Alignment
-  textOffsetX: 32, // Optical balance between crescent flowers (left) and circle edge (right)
+  textOffsetX: 40, // Optical balance (centerX = 290) between crescent flowers (left) and circle edge (right)
 
   // Hole Guide Settings
   showHole: false,
@@ -114,9 +114,9 @@ export function generateCardSvg(state) {
       <text x="${centerX}" y="${greetingY}" 
             font-family="${greetingFamily}" 
             font-size="${s.greetingFontSize}" 
-            fill="${s.greetingColor}" 
+            fill="url(#gold-foil)" 
             text-anchor="middle"
-            font-weight="500">
+            font-weight="normal">
         ${greetingSafe === 'Gracias por' ? 'Muchas Gracias' : greetingSafe}
       </text>
 
@@ -127,86 +127,76 @@ export function generateCardSvg(state) {
         <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" letter-spacing="2.5" font-weight="600">${name2Safe}</tspan>
       </text>
 
-      <!-- Message: 3-line balanced gold/bronze gratitude statement -->
+      <!-- Message: 3-line balanced gold/bronze gratitude statement in cursive -->
       <g id="message-group" text-anchor="middle">
         ${renderMonogramMessage(s.messageText, centerX, messageStartY, s.messageFontSize, messageFamily, s.messageColor)}
       </g>
 
-      <!-- Prominent Gold Date Dividers: ———— 19. 11. 2026 ———— -->
+      <!-- Prominent Gold Date Dividers: — 19. 11. 2026 — -->
       <g id="date-group" text-anchor="middle">
-        <line x1="${centerX - 165}" y1="${dateY - 7}" x2="${centerX - 72}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="${centerX - 92}" y1="${dateY - 7}" x2="${centerX - 54}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
         <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="3.5" font-weight="600">
           ${dateSafe}
         </text>
-        <line x1="${centerX + 72}" y1="${dateY - 7}" x2="${centerX + 165}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="${centerX + 54}" y1="${dateY - 7}" x2="${centerX + 92}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
       </g>
     `;
   } else if (isCrescent) {
-    // Faithful Crescent Layout (Exact geometry calibrated from reference photo)
+    // Faithful Canva Masterpiece Crescent Layout (Matching WhatsApp .52 copy exactly)
     const offsetY = hasTopHole ? 10 : 0;
-    const topFlourishY = 108 + offsetY;
-    const namesY = 154 + offsetY;
-    const dividerY = 190 + offsetY;
-    const messageY = 308 + offsetY;
-    const dateY = 378 + offsetY;
-    const laurelY = 418 + offsetY;
+    const namesY = 156 + offsetY;
+    const dividerY = 192 + offsetY;
+    const subtitleY = 232 + offsetY;
+    const messageY = 274 + offsetY;
+    const dateY = 350 + offsetY;
+    const laurelY = 388 + offsetY;
 
     const isSplitGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
+    const subtitleText = isSplitGreeting ? 'Gracias por acompañarnos' : `${greetingSafe} ${highlightSafe}`.trim();
 
     textGroupContent = `
-      <!-- Romantic Top Flourish: ~ ♡ ~ -->
-      ${renderTopHeartFlourish(centerX, topFlourishY, s.flourishColor)}
-
-      <!-- Names: "Saray & Michael" in bold flowing script -->
+      <!-- 1. Hero Names: "Saray & Michael" in signature flowing calligraphy -->
       <text x="${centerX}" y="${namesY}" text-anchor="middle">
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="600">${name1Safe}</tspan>
+        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name1Safe}</tspan>
         <tspan font-family="${ampersandFamily}" font-size="${s.ampersandFontSize}" fill="${s.ampersandColor}" font-weight="normal"> ${ampersandSafe} </tspan>
-        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="600">${name2Safe}</tspan>
+        <tspan font-family="${namesFamily}" font-size="${s.namesFontSize}" fill="${s.namesColor}" font-weight="normal">${name2Safe}</tspan>
       </text>
 
-      <!-- Fine Line with Hollow Heart Divider: — ♡ — -->
-      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 175)}
+      <!-- 2. Delicate Line with Hollow Heart Divider: —— ♡ —— -->
+      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 136)}
 
-      <!-- Subtitle: "Gracias por" (Serif) + "acompañarnos" (Large Script) -->
-      ${isSplitGreeting ? `
-        <text x="${centerX}" y="${226 + offsetY}" font-family="${greetingFamily}" font-size="${s.greetingFontSize}" fill="${s.greetingColor}" text-anchor="middle" font-weight="600" letter-spacing="1.5">
-          Gracias por
-        </text>
-        <text x="${centerX}" y="${268 + offsetY}" font-family="${highlightFamily}" font-size="${s.highlightFontSize}" fill="${s.highlightColor}" text-anchor="middle" font-weight="500">
-          acompañarnos
-        </text>
-      ` : `
-        <text x="${centerX}" y="${230 + offsetY}" font-family="${greetingFamily}" font-size="${s.greetingFontSize}" fill="${s.greetingColor}" text-anchor="middle" font-weight="500">
-          ${greetingSafe}
-        </text>
-        <text x="${centerX}" y="${268 + offsetY}" font-family="${highlightFamily}" font-size="${s.highlightFontSize}" fill="${s.highlightColor}" text-anchor="middle" font-weight="500">
-          ${highlightSafe}
-        </text>
-      `}
+      <!-- 3. Subtitle in Romantic Calligraphy: "Gracias por acompañarnos" -->
+      <text x="${centerX}" y="${subtitleY}" 
+            font-family="${highlightFamily || namesFamily}" 
+            font-size="${s.highlightFontSize}" 
+            fill="${s.highlightColor || s.namesColor}" 
+            text-anchor="middle" 
+            font-weight="normal">
+        ${subtitleText}
+      </text>
 
-      <!-- Emotive Body Message: 2 balanced bold lines for crystal print clarity -->
-      <g id="message-group" text-anchor="middle">
-        ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
-      </g>
+      <!-- 4. Emotive Body Message in 2 balanced lines of clean Cormorant Garamond -->
+      ${s.messageText ? `
+        <g id="message-group" text-anchor="middle">
+          ${renderCrescentMessage(s.messageText, centerX, messageY, s.messageFontSize, messageFamily, s.messageColor)}
+        </g>
+      ` : ''}
 
-      <!-- Date: "19. 11. 2026" (Solid tabular serif with dot rules) -->
-      <g id="date-group" text-anchor="middle">
-        <line x1="${centerX - 100}" y1="${dateY - 7}" x2="${centerX - 56}" y2="${dateY - 7}" stroke="${s.flourishColor}" stroke-width="1.2" stroke-linecap="round"/>
-        <text id="date-text" 
-              x="${centerX}" 
-              y="${dateY}" 
-              font-family="${dateFamily}" 
-              font-size="${s.dateFontSize}" 
-              fill="${s.dateColor}" 
-              letter-spacing="3" 
-              font-weight="600">
-          ${dateSafe}
-        </text>
-        <line x1="${centerX + 56}" y1="${dateY - 7}" x2="${centerX + 100}" y2="${dateY - 7}" stroke="${s.flourishColor}" stroke-width="1.2" stroke-linecap="round"/>
-      </g>
+      <!-- 5. Date in Elegant Tabular Numbers: "19. 11. 2026" -->
+      <text id="date-text" 
+            x="${centerX}" 
+            y="${dateY}" 
+            font-family="${dateFamily}" 
+            font-size="${s.dateFontSize}" 
+            fill="${s.dateColor}" 
+            letter-spacing="2" 
+            text-anchor="middle"
+            font-weight="600">
+        ${dateSafe}
+      </text>
 
-      <!-- Authentic Watercolor Laurel Sprig with Dusty Pink Heart -->
-      ${renderWatercolorLaurelDivider(centerX - 4, laurelY, 0.9)}
+      <!-- 6. Authentic Watercolor Laurel Branch with Dusty Pink Heart -->
+      ${renderWatercolorLaurelDivider(centerX, laurelY, 0.76)}
     `;
   } else {
     // Centered layout for Wreath & Twin Bouquets

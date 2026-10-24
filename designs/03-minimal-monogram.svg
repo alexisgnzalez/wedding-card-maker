@@ -83,9 +83,9 @@
       <text x="250" y="156" 
             font-family="'Alex Brush', cursive" 
             font-size="44" 
-            fill="#B5874A" 
+            fill="url(#gold-foil)" 
             text-anchor="middle"
-            font-weight="500">
+            font-weight="normal">
         Muchas Gracias
       </text>
 
@@ -96,7 +96,7 @@
         <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Michael</tspan>
       </text>
 
-      <!-- Message: 3-line balanced gold/bronze gratitude statement -->
+      <!-- Message: 3-line balanced gold/bronze gratitude statement in cursive -->
       <g id="message-group" text-anchor="middle">
         
       <text x="250" y="258" font-family="'Forum', serif" font-size="21" fill="#38312E" font-weight="500">
@@ -107,13 +107,13 @@
     
       </g>
 
-      <!-- Prominent Gold Date Dividers: ———— 19. 11. 2026 ———— -->
+      <!-- Prominent Gold Date Dividers: — 19. 11. 2026 — -->
       <g id="date-group" text-anchor="middle">
-        <line x1="85" y1="357" x2="178" y2="357" stroke="url(#gold-foil)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="158" y1="357" x2="196" y2="357" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
         <text x="250" y="364" font-family="'Tenor Sans', sans-serif" font-size="24" fill="#26211F" letter-spacing="3.5" font-weight="600">
           19. 11. 2026
         </text>
-        <line x1="322" y1="357" x2="415" y2="357" stroke="url(#gold-foil)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="304" y1="357" x2="342" y2="357" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
       </g>
     
     </g>
