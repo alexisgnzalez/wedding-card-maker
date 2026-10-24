@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saray & Michael — Diseñador de Tarjetas Nupciales Circulares (5cm x 5cm)</title>
+  <meta name="description" content="Taller interactivo de diseño y personalización de tarjetas circulares para boda de Saray y Michael. Exportación profesional en SVG, PNG y JPEG.">
+  
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Alex+Brush&family=Great+Vibes&family=Pinyon+Script&family=Allura&family=Parisienne&family=Dancing+Script:wght@500;700&family=MonteCarlo&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600;700&family=Prata&family=Marcellus&family=Italiana&family=Montserrat:wght@300;400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/src/index.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-section">
+        <div class="brand-logo-ring">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v8"></path>
+            <path d="M8 12h8"></path>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>Saray & Michael <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8;">| Tarjeta Recuerdo 5cm</span></h1>
+          <p>Taller de Diseño Nupcial · Exportación Imprenta 300 DPI · Vector SVG</p>
+        </div>
+      </div>
+
+      <div class="header-badges">
+        <div class="badge badge-gold">
+          <span>●</span> 5.0 cm x 5.0 cm (Circular)
+        </div>
+        <div class="badge">
+          <span>❖</span> Sin Pareja (Flora & Tipografía)
+        </div>
+        <div class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          alexisgnzalez/wedding-card-maker
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-show-inspiration" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          Ver Inspiración Original
+        </button>
+        <button id="btn-open-catalog" class="btn btn-outline-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Variaciones <span class="count-pill" id="saved-count-badge">5</span>
+        </button>
+        <button id="btn-save-variation" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+          Guardar Esta Opción
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Main Content -->
+  <main class="app-main">
+    
+    <!-- Canvas Stage (Left Area) -->
+    <section class="stage-container">
+      <div class="stage-top-bar">
+        <div class="preset-pills-scroll" id="preset-pills-bar">
+          <!-- Preset buttons generated dynamically -->
+        </div>
+        <div class="badge" id="theme-label-badge" style="font-weight: 600;">
+          Media Luna Acuarela
+        </div>
+      </div>
+
+      <!-- Viewport Stage -->
+      <div class="stage-viewport" id="stage-viewport">
+        <div class="viewport-grid-bg"></div>
+
+        <!-- 5cm Circular Card Mockup -->
+        <div class="card-preview-wrapper" id="card-preview-wrapper">
+          <div class="card-disc-shadow"></div>
+          <div id="svg-preview-container">
+            <!-- Dynamic SVG injected here -->
+          </div>
+        </div>
+
+        <div class="ruler-indicator ruler-bottom">
+          ESCALA FÍSICA: 50.0 mm (5 cm) Ø CIRCULAR
+        </div>
+      </div>
+
+      <!-- Stage Bottom Action Bar -->
+      <div class="stage-bottom-bar">
+        <div class="stage-view-toggles">
+          <button id="btn-toggle-scale" class="btn-toggle" title="Ver en escala real aproximada 5cm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span id="scale-label">Zoom Completo</span>
+          </button>
+          
+          <button id="btn-toggle-hole" class="btn-toggle" title="Mostrar u ocultar perforación para tagpin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="6"></circle></svg>
+            <span id="hole-label">Agujero: Oculto</span>
+          </button>
+
+          <button id="btn-toggle-guide" class="btn-toggle" title="Mostrar zona segura de corte 4mm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
+            <span id="guide-label">Guía de Corte</span>
+          </button>
+
+          <button id="btn-toggle-pin" class="btn-toggle" title="Simular pasador decorativo dorado con cinta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="8" x2="12" y2="21"></line></svg>
+            <span id="pin-label">Pasador Pin</span>
+          </button>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="export-group">
+          <button id="btn-export-svg" class="btn btn-outline-gold" title="Descargar archivo vectorial SVG original">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            SVG
+          </button>
+          <button id="btn-export-png" class="btn btn-primary" title="Descargar PNG a 300 DPI listo para imprenta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            PNG (300 DPI)
+          </button>
+          <button id="btn-export-jpeg" class="btn btn-secondary" title="Descargar imagen JPEG de alta calidad">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            JPEG
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Inspector / Controls (Right Panel) -->
+    <aside class="inspector-panel">
+      <!-- Tabs -->
+      <nav class="inspector-tabs">
+        <button class="inspector-tab-btn active" data-tab="tab-text">Textos</button>
+        <button class="inspector-tab-btn" data-tab="tab-fonts">Tipografías</button>
+        <button class="inspector-tab-btn" data-tab="tab-style">Estilo & Oro</button>
+        <button class="inspector-tab-btn" data-tab="tab-pin">Troquel</button>
+      </nav>
+
+      <div class="inspector-content">
+
+        <!-- TAB 1: TEXTOS -->
+        <div class="tab-pane active" id="tab-text">
+          <div class="control-section">
+            <div class="section-title">Nombres de los Novios</div>
+            <div class="form-row-3">
+              <div class="form-group">
+                <label class="form-label" for="input-name1">Novia</label>
+                <input type="text" id="input-name1" class="form-control" value="Saray">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-ampersand">Unión</label>
+                <input type="text" id="input-ampersand" class="form-control" value="&" style="text-align: center;">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-name2">Novio</label>
+                <input type="text" id="input-name2" class="form-control" value="Michael">
+              </div>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Mensaje de Gratitud (Español)</div>
+            <div class="form-group">
+              <label class="form-label" for="input-greeting">Encabezado</label>
+              <input type="text" id="input-greeting" class="form-control" value="Gracias por">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="input-highlight">Palabra en Cursiva Destacada</label>
+              <input type="text" id="input-highlight" class="form-control" value="acompañarnos">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="input-message">Mensaje Emotivo</label>
+              <textarea id="input-message" class="form-control" rows="2">Tu presencia hizo este día aún más especial.</textarea>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Fecha del Evento</div>
+            <div class="form-group">
+              <label class="form-label" for="input-date">Fecha Impresa</label>
+              <input type="text" id="input-date" class="form-control" value="24 · Noviembre · 2026">
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Plantilla Botánica</div>
+            <div class="form-group">
+              <label class="form-label" for="select-theme">Composición Floral</label>
+              <select id="select-theme" class="form-control">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group" id="offset-x-container">
+              <label class="form-label">
+                <span>Centrado Óptico Horizontal</span>
+                <span class="range-val" id="val-text-offset">24px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="input-text-offset" min="-40" max="60" value="24">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: TIPOGRAFÍAS -->
+        <div class="tab-pane" id="tab-fonts" style="display: none;">
+          <div class="control-section">
+            <div class="section-title">Tipografía de Nombres</div>
+            <div class="form-group">
+              <label class="form-label" for="font-names">Fuente para "Saray & Michael"</label>
+              <select id="font-names" class="form-control font-selector"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span>Tamaño de Nombres</span>
+                <span class="range-val" id="val-names-size">46px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="size-names" min="28" max="64" value="46">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="font-ampersand">Fuente del Conector "&"</label>
+              <select id="font-ampersand" class="form-control font-selector"></select>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Tipografía de "Gracias por"</div>
+            <div class="form-group">
+              <label class="form-label" for="font-greeting">Fuente</label>
+              <select id="font-greeting" class="form-control font-selector"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span>Tamaño</span>
+                <span class="range-val" id="val-greeting-size">19px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="size-greeting" min="12" max="28" value="19">
+              </div>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Tipografía de "acompañarnos"</div>
+            <div class="form-group">
+              <label class="form-label" for="font-highlight">Fuente en Cursiva</label>
+              <select id="font-highlight" class="form-control font-selector"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span>Tamaño</span>
+                <span class="range-val" id="val-highlight-size">32px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="size-highlight" min="20" max="44" value="32">
+              </div>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Tipografía del Mensaje</div>
+            <div class="form-group">
+              <label class="form-label" for="font-message">Fuente</label>
+              <select id="font-message" class="form-control font-selector"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span>Tamaño</span>
+                <span class="range-val" id="val-message-size">14.5px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="size-message" min="10" max="22" step="0.5" value="14.5">
+              </div>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Tipografía de la Fecha</div>
+            <div class="form-group">
+              <label class="form-label" for="font-date">Fuente</label>
+              <select id="font-date" class="form-control font-selector"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">
+                <span>Tamaño</span>
+                <span class="range-val" id="val-date-size">13px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="size-date" min="9" max="20" value="13">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: ESTILO & ORO -->
+        <div class="tab-pane" id="tab-style" style="display: none;">
+          <div class="control-section">
+            <div class="section-title">Paleta de Colores Nupciales</div>
+            
+            <div class="color-swatch-row">
+              <span class="form-label" style="margin:0;">Papel / Fondo</span>
+              <div class="color-input-wrapper">
+                <input type="color" id="color-bg" value="#FAF8F5">
+                <span class="color-hex" id="hex-bg">#FAF8F5</span>
+              </div>
+            </div>
+
+            <div class="color-swatch-row">
+              <span class="form-label" style="margin:0;">Nombres Principales</span>
+              <div class="color-input-wrapper">
+                <input type="color" id="color-names" value="#2C2523">
+                <span class="color-hex" id="hex-names">#2C2523</span>
+              </div>
+            </div>
+
+            <div class="color-swatch-row">
+              <span class="form-label" style="margin:0;">Conector "&" / Oro Rosa</span>
+              <div class="color-input-wrapper">
+                <input type="color" id="color-ampersand" value="#C28B59">
+                <span class="color-hex" id="hex-ampersand">#C28B59</span>
+              </div>
+            </div>
+
+            <div class="color-swatch-row">
+              <span class="form-label" style="margin:0;">Palabra Destacada</span>
+              <div class="color-input-wrapper">
+                <input type="color" id="color-highlight" value="#B87B4C">
+                <span class="color-hex" id="hex-highlight">#B87B4C</span>
+              </div>
+            </div>
+
+            <div class="color-swatch-row">
+              <span class="form-label" style="margin:0;">Mensaje y Textos</span>
+              <div class="color-input-wrapper">
+                <input type="color" id="color-message" value="#524B45">
+                <span class="color-hex" id="hex-message">#524B45</span>
+              </div>
+            </div>
+
+            <div class="color-swatch-row">
+              <span class="form-label" style="margin:0;">Adornos & Corazones</span>
+              <div class="color-input-wrapper">
+                <input type="color" id="color-flourish" value="#C28B59">
+                <span class="color-hex" id="hex-flourish">#C28B59</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <div class="section-title">Marco y Anillo Decorativo</div>
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between;">
+              <label class="form-label" style="margin:0;">Mostrar Aro Interior Delicado</label>
+              <input type="checkbox" id="check-border-ring" checked style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: PERFORACIÓN / TROQUEL -->
+        <div class="tab-pane" id="tab-pin" style="display: none;">
+          <div class="control-section">
+            <div class="section-title">Perforación para Tagpin / Cintas</div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.4;">
+              Espacio reservado para colgar la tarjeta circular al detalle o recuerdo con cinta de seda o pin metálico.
+            </p>
+
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between;">
+              <label class="form-label" style="margin:0;">Incluir Agujero en el Troquel</label>
+              <input type="checkbox" id="check-hole" style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+            </div>
+
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between;">
+              <label class="form-label" style="margin:0;">Mostrar Guía de Zona Segura (Corte)</label>
+              <input type="checkbox" id="check-guide" style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+            </div>
+
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between;">
+              <label class="form-label" style="margin:0;">Simular Pasador Metálico & Cinta</label>
+              <input type="checkbox" id="check-pin" style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span>Posición Vertical del Agujero</span>
+                <span class="range-val" id="val-hole-y">35px</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="range-hole-y" min="20" max="65" value="35">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span>Diámetro de Perforación</span>
+                <span class="range-val" id="val-hole-radius">3.5 mm</span>
+              </label>
+              <div class="range-group">
+                <input type="range" id="range-hole-radius" min="10" max="25" value="16">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+  </main>
+
+  <!-- Modal: Inspiración Original de la Novia -->
+  <div class="modal-overlay" id="modal-inspiration">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>Inspiración de la Novia vs Diseño de Saray & Michael</h3>
+        <button class="btn btn-secondary btn-close-modal" data-modal="modal-inspiration">✕ Cerrar</button>
+      </div>
+      <div class="modal-body" style="grid-template-columns: 1fr 1fr; align-items: center;">
+        <div style="text-align: center;">
+          <h4 style="margin-bottom: 8px; color: var(--gold-primary);">Foto de Referencia Original</h4>
+          <img src="/bride-inspiration.jpeg" alt="Inspiración de la novia" style="max-height: 480px; width: auto; max-width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--shadow-card);">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary);">
+          <h4 style="color: #fff; font-size: 1.05rem;">Análisis y Adaptación de Diseño</h4>
+          <p>
+            <strong style="color: #fff;">1. Sin Pareja:</strong> Tal como indicaste en los no-negociables, se ha retirado la caricatura de la pareja, logrando un balance tipográfico y floral limpio y sofisticado.
+          </p>
+          <p>
+            <strong style="color: #fff;">2. Arco Floral en Acuarela:</strong> Mantiene la delicadeza de las rosas blush, flores marfil y ramas de eucalipto en tonos salvia y dorado.
+          </p>
+          <p>
+            <strong style="color: #fff;">3. Tipografía & Cursiva:</strong> Cursiva fluida inspirada en la original con el conector "&" y la palabra "acompañarnos" en tono oro/cobre cálido.
+          </p>
+          <p>
+            <strong style="color: #fff;">4. Formato Circular 5cm:</strong> Proporción milimétrica real para troquel redondo con espacio reservado para ojete/tagpin sin tocar el texto.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Catálogo de Variaciones Guardadas -->
+  <div class="modal-overlay" id="modal-catalog">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3>Historial & Catálogo de Variaciones Guardadas</h3>
+        <button class="btn btn-secondary btn-close-modal" data-modal="modal-catalog">✕ Cerrar</button>
+      </div>
+      <div class="modal-body" id="catalog-cards-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>
