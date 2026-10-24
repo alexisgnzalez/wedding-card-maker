@@ -52,7 +52,7 @@ export const DEFAULT_CARD_STATE = {
   showBorderRing: false,
 
   // Alignment
-  textOffsetX: 40, // Optical balance (centerX = 290) between crescent flowers (left) and circle edge (right)
+  textOffsetX: 56, // Optical balance (centerX = 306) between crescent flowers (left) and circle edge (right)
 
   // Hole Guide Settings
   showHole: false,
@@ -97,17 +97,17 @@ export function generateCardSvg(state) {
   const dateSafe = esc(s.dateText);
 
   // In crescent theme, center optically in the right opening (x=282px by default)
-  const centerX = isCrescent ? (250 + (s.textOffsetX ?? 32)) : 250;
+  const centerX = isCrescent ? (250 + (s.textOffsetX ?? 56)) : 250;
 
   let textGroupContent = '';
 
   if (isMonogram) {
     // Monogram & Gold Layout (Exact Proportions from WhatsApp Reference .51 / .52)
     const offsetY = hasTopHole ? 10 : 0;
-    const greetingY = 156 + offsetY;
-    const namesY = 210 + offsetY;
+    const greetingY = 154 + offsetY;
+    const namesY = 208 + offsetY;
     const messageStartY = 258 + offsetY;
-    const dateY = 364 + offsetY;
+    const dateY = 368 + offsetY;
 
     textGroupContent = `
       <!-- Heading: "Muchas Gracias" in Gold Calligraphy -->
@@ -132,24 +132,24 @@ export function generateCardSvg(state) {
         ${renderMonogramMessage(s.messageText, centerX, messageStartY, s.messageFontSize, messageFamily, s.messageColor)}
       </g>
 
-      <!-- Prominent Gold Date Dividers: — 19. 11. 2026 — -->
+      <!-- Flanking Gold Date Dividers: — 19. 11. 2026 — (Clean gap, never overlaps text) -->
       <g id="date-group" text-anchor="middle">
-        <line x1="${centerX - 92}" y1="${dateY - 7}" x2="${centerX - 54}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
-        <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="3.5" font-weight="600">
+        <line x1="${centerX - 136}" y1="${dateY - 7}" x2="${centerX - 84}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+        <text x="${centerX}" y="${dateY}" font-family="${dateFamily}" font-size="${s.dateFontSize}" fill="${s.dateColor}" letter-spacing="2" font-weight="600">
           ${dateSafe}
         </text>
-        <line x1="${centerX + 54}" y1="${dateY - 7}" x2="${centerX + 92}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="${centerX + 84}" y1="${dateY - 7}" x2="${centerX + 136}" y2="${dateY - 7}" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
       </g>
     `;
   } else if (isCrescent) {
-    // Faithful Canva Masterpiece Crescent Layout (Matching WhatsApp .52 copy exactly)
+    // Faithful Canva Masterpiece Crescent Layout (Exact WhatsApp .52 copy calibration)
     const offsetY = hasTopHole ? 10 : 0;
-    const namesY = 156 + offsetY;
-    const dividerY = 192 + offsetY;
-    const subtitleY = 232 + offsetY;
-    const messageY = 274 + offsetY;
-    const dateY = 350 + offsetY;
-    const laurelY = 388 + offsetY;
+    const namesY = 142 + offsetY;
+    const dividerY = 180 + offsetY;
+    const subtitleY = 236 + offsetY;
+    const messageY = 286 + offsetY;
+    const dateY = 366 + offsetY;
+    const laurelY = 396 + offsetY;
 
     const isSplitGreeting = (s.greetingText === 'Gracias por' && s.highlightText === 'acompañarnos');
     const subtitleText = isSplitGreeting ? 'Gracias por acompañarnos' : `${greetingSafe} ${highlightSafe}`.trim();
@@ -163,7 +163,7 @@ export function generateCardSvg(state) {
       </text>
 
       <!-- 2. Delicate Line with Hollow Heart Divider: —— ♡ —— -->
-      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 136)}
+      ${renderDelicateHollowHeartDivider(centerX, dividerY, s.flourishColor, 180)}
 
       <!-- 3. Subtitle in Romantic Calligraphy: "Gracias por acompañarnos" -->
       <text x="${centerX}" y="${subtitleY}" 
@@ -195,8 +195,8 @@ export function generateCardSvg(state) {
         ${dateSafe}
       </text>
 
-      <!-- 6. Authentic Watercolor Laurel Branch with Dusty Pink Heart -->
-      ${renderWatercolorLaurelDivider(centerX, laurelY, 0.76)}
+      <!-- 6. Authentic Watercolor Laurel Branch with Dusty Pink Heart (Full Unclipped Asset) -->
+      ${renderWatercolorLaurelDivider(centerX, laurelY, 0.72)}
     `;
   } else {
     // Centered layout for Wreath & Twin Bouquets

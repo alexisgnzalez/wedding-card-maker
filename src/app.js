@@ -371,7 +371,7 @@ class WeddingCardApp {
     }
 
     if (theme.layout === 'crescent-authentic') {
-      this.state.textOffsetX = 40;
+      this.state.textOffsetX = 56;
       this.state.greetingText = 'Gracias por';
       this.state.highlightText = 'acompañarnos';
       this.state.messageText = 'Su presencia hizo este día aún más especial';

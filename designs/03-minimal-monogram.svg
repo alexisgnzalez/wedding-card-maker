@@ -80,7 +80,7 @@
     <g id="typography-layer">
       
       <!-- Heading: "Muchas Gracias" in Gold Calligraphy -->
-      <text x="250" y="156" 
+      <text x="250" y="154" 
             font-family="'Alex Brush', cursive" 
             font-size="44" 
             fill="url(#gold-foil)" 
@@ -90,7 +90,7 @@
       </text>
 
       <!-- Names: "Saray & Michael" in High-Fashion Display Serif (Titlecase, Tracked) -->
-      <text x="250" y="210" text-anchor="middle">
+      <text x="250" y="208" text-anchor="middle">
         <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Saray</tspan>
         <tspan font-family="'Tenor Sans', sans-serif" font-size="36" fill="#B5874A" font-weight="normal"> &amp; </tspan>
         <tspan font-family="'Tenor Sans', sans-serif" font-size="40" fill="#26211F" letter-spacing="2.5" font-weight="600">Michael</tspan>
@@ -107,13 +107,13 @@
     
       </g>
 
-      <!-- Prominent Gold Date Dividers: — 19. 11. 2026 — -->
+      <!-- Flanking Gold Date Dividers: — 19. 11. 2026 — (Clean gap, never overlaps text) -->
       <g id="date-group" text-anchor="middle">
-        <line x1="158" y1="357" x2="196" y2="357" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
-        <text x="250" y="364" font-family="'Tenor Sans', sans-serif" font-size="24" fill="#26211F" letter-spacing="3.5" font-weight="600">
+        <line x1="114" y1="361" x2="166" y2="361" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
+        <text x="250" y="368" font-family="'Tenor Sans', sans-serif" font-size="24" fill="#26211F" letter-spacing="2" font-weight="600">
           19. 11. 2026
         </text>
-        <line x1="304" y1="357" x2="342" y2="357" stroke="url(#gold-foil)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="334" y1="361" x2="386" y2="361" stroke="url(#gold-foil)" stroke-width="1.3" stroke-linecap="round"/>
       </g>
     
     </g>

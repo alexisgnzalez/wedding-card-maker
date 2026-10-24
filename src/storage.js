@@ -2,7 +2,7 @@
 import { DEFAULT_CARD_STATE, generateCardSvg } from './card-generator.js';
 import { THEMES } from './floral-templates.js';
 
-const STORAGE_KEY = 'wedding_card_designs_v5';
+const STORAGE_KEY = 'wedding_card_designs_v6';
 
 export const PRESET_DESIGNS = [
   {
@@ -41,7 +41,7 @@ export const PRESET_DESIGNS = [
       messageColor: '#302A27',
       dateColor: '#24201E',
       flourishColor: '#A47C48',
-      textOffsetX: 40,
+      textOffsetX: 56,
       showHole: false,
       showGuide: false,
       showPin: false,

@@ -266,7 +266,7 @@ export function renderTopHeartFlourish(x = 250, y = 108, color = '#A47C48') {
 }
 
 // High-end Flourish with delicate hollow heart
-export function renderDelicateHollowHeartDivider(x = 250, y = 188, color = '#777777', width = 160) {
+export function renderDelicateHollowHeartDivider(x = 250, y = 180, color = '#777777', width = 180) {
   const half = width / 2;
   return `
     <g id="delicate-heart-divider" transform="translate(${x}, ${y})">
@@ -282,11 +282,10 @@ export function renderDelicateHollowHeartDivider(x = 250, y = 188, color = '#777
   `;
 }
 
-// Authentic Watercolor Laurel & Heart Divider
-export function renderWatercolorLaurelDivider(x = 250, y = 422, scale = 0.88) {
-  // laurel width 230, height 65
-  const w = 230 * scale;
-  const h = 65 * scale;
+// Authentic Watercolor Laurel & Heart Divider (Full 304x97 Symmetrical Asset)
+export function renderWatercolorLaurelDivider(x = 250, y = 396, scale = 0.72) {
+  const w = 304 * scale;
+  const h = 97 * scale;
   return `
     <g id="watercolor-laurel-divider" transform="translate(${x - w / 2}, ${y - h / 2})">
       <image href="${ASSETS.laurelPng}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="xMidYMid meet"/>
