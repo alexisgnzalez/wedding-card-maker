@@ -48,15 +48,22 @@
       <div class="header-actions">
         <button id="btn-show-inspiration" class="btn btn-secondary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-          Ver Inspiración Original
+          Inspiración
         </button>
         <button id="btn-open-catalog" class="btn btn-outline-gold">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
           Variaciones <span class="count-pill" id="saved-count-badge">5</span>
         </button>
-        <button id="btn-save-variation" class="btn btn-primary">
+        <button id="btn-save-variation" class="btn btn-secondary" title="Guardar esta variación en el catálogo local">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-          Guardar Esta Opción
+          Guardar
+        </button>
+        <button id="btn-header-export-png" class="btn btn-primary" title="Descargar inmediatamente imagen PNG a 300 DPI lista para imprenta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Descargar PNG (300 DPI)
+        </button>
+        <button id="btn-header-export-svg" class="btn btn-outline-gold" title="Descargar archivo vectorial SVG original">
+          SVG
         </button>
       </div>
     </div>

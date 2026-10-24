@@ -326,28 +326,59 @@ class WeddingCardApp {
     });
 
     // Exports
-    document.getElementById('btn-export-svg').addEventListener('click', () => {
-      const svg = generateCardSvg(this.state);
-      downloadSvg(svg, `tarjeta-boda-${this.state.name1.toLowerCase()}-${this.state.name2.toLowerCase()}.svg`);
-      this.showToast('Descargando archivo vectorial SVG...');
-      this.triggerExportCelebration();
-    });
+    const getBaseFilename = () => {
+      const n1 = (this.state.name1 || 'saray').trim().toLowerCase().replace(/[^a-z0-9]/gi, '-');
+      const n2 = (this.state.name2 || 'michael').trim().toLowerCase().replace(/[^a-z0-9]/gi, '-');
+      return `tarjeta-boda-${n1}-${n2}`;
+    };
 
-    document.getElementById('btn-export-png').addEventListener('click', async () => {
-      this.showToast('Renderizando imagen PNG a 300 DPI...');
-      const svg = generateCardSvg(this.state);
-      await downloadRaster(svg, 'png', 300, `tarjeta-boda-${this.state.name1.toLowerCase()}-${this.state.name2.toLowerCase()}-300dpi`);
-      this.showToast('¡Descarga PNG completada!');
-      this.triggerExportCelebration();
-    });
+    const handleDownloadSvg = async () => {
+      try {
+        this.showToast('Generando archivo vectorial SVG...');
+        const svg = generateCardSvg(this.state);
+        await downloadSvg(svg, `${getBaseFilename()}.svg`);
+        this.showToast('¡Descarga SVG completada! Revisa tus descargas.');
+        this.triggerExportCelebration();
+      } catch (err) {
+        console.error('Error al exportar SVG:', err);
+        this.showToast('Error al exportar SVG: ' + err.message, true);
+      }
+    };
 
-    document.getElementById('btn-export-jpeg').addEventListener('click', async () => {
-      this.showToast('Renderizando imagen JPEG a 300 DPI...');
-      const svg = generateCardSvg(this.state);
-      await downloadRaster(svg, 'jpeg', 300, `tarjeta-boda-${this.state.name1.toLowerCase()}-${this.state.name2.toLowerCase()}-300dpi`);
-      this.showToast('¡Descarga JPEG completada!');
-      this.triggerExportCelebration();
-    });
+    const handleDownloadPng = async () => {
+      try {
+        this.showToast('Renderizando imagen PNG a 300 DPI...');
+        const svg = generateCardSvg(this.state);
+        await downloadRaster(svg, 'png', 300, `${getBaseFilename()}-300dpi`);
+        this.showToast('¡Descarga PNG (300 DPI) completada! Revisa tus descargas.');
+        this.triggerExportCelebration();
+      } catch (err) {
+        console.error('Error al exportar PNG:', err);
+        this.showToast('Error al exportar PNG: ' + err.message, true);
+      }
+    };
+
+    const handleDownloadJpeg = async () => {
+      try {
+        this.showToast('Renderizando imagen JPEG a 300 DPI...');
+        const svg = generateCardSvg(this.state);
+        await downloadRaster(svg, 'jpeg', 300, `${getBaseFilename()}-300dpi`);
+        this.showToast('¡Descarga JPEG completada! Revisa tus descargas.');
+        this.triggerExportCelebration();
+      } catch (err) {
+        console.error('Error al exportar JPEG:', err);
+        this.showToast('Error al exportar JPEG: ' + err.message, true);
+      }
+    };
+
+    // Stage bottom export buttons
+    document.getElementById('btn-export-svg')?.addEventListener('click', handleDownloadSvg);
+    document.getElementById('btn-export-png')?.addEventListener('click', handleDownloadPng);
+    document.getElementById('btn-export-jpeg')?.addEventListener('click', handleDownloadJpeg);
+
+    // Header direct export buttons
+    document.getElementById('btn-header-export-svg')?.addEventListener('click', handleDownloadSvg);
+    document.getElementById('btn-header-export-png')?.addEventListener('click', handleDownloadPng);
   }
 
   bindColorPicker(colorInput, hexLabel, stateKey) {
@@ -677,20 +708,29 @@ class WeddingCardApp {
     this.savedCountBadge.textContent = this.savedDesigns.length;
   }
 
-  showToast(message) {
+  showToast(message, isError = false) {
     const toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = `toast ${isError ? 'toast-error' : ''}`;
+    if (isError) {
+      toast.style.borderColor = '#E05D52';
+      toast.style.boxShadow = '0 8px 32px rgba(224, 93, 82, 0.3)';
+    }
+    const iconSvg = isError
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E05D52" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
     toast.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      <span>${message}</span>
+      ${iconSvg}
+      <span style="${isError ? 'color: #FFAAA0;' : ''}">${message}</span>
     `;
     this.toastContainer.appendChild(toast);
+    const duration = isError ? 5000 : 3200;
     setTimeout(() => {
       toast.style.opacity = '0';
       toast.style.transform = 'translateY(10px)';
       toast.style.transition = 'all 0.3s ease';
       setTimeout(() => toast.remove(), 300);
-    }, 2800);
+    }, duration);
   }
 
   triggerExportCelebration() {
@@ -703,7 +743,12 @@ class WeddingCardApp {
   }
 }
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize immediately or on DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    window.app = new WeddingCardApp();
+  });
+} else {
   window.app = new WeddingCardApp();
-});
+}
+

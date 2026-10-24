@@ -192,7 +192,7 @@ export function renderFloralBackground(layout, customColors = {}, isCustomText =
       return `
         <!-- Authentic Crescent Blush Rose Masterpiece Template -->
         <g id="authentic-crescent-group">
-          <image href="${blushSrc}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
+          <image href="${blushSrc}" xlink:href="${blushSrc}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
         </g>
       `;
 
@@ -202,7 +202,7 @@ export function renderFloralBackground(layout, customColors = {}, isCustomText =
       return `
         <!-- Geometric Gold Frame & Eucalyptus Template (Variant 1) -->
         <g id="geometric-eucalyptus-group">
-          <image href="${v1Src}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
+          <image href="${v1Src}" xlink:href="${v1Src}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
         </g>
       `;
 
@@ -212,7 +212,7 @@ export function renderFloralBackground(layout, customColors = {}, isCustomText =
       return `
         <!-- Wild Botanical Lavender & Daisies Template (Variant 5) -->
         <g id="wild-lavender-group">
-          <image href="${v5Src}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
+          <image href="${v5Src}" xlink:href="${v5Src}" x="0" y="0" width="500" height="500" preserveAspectRatio="xMidYMid meet"/>
         </g>
       `;
 
@@ -226,7 +226,7 @@ export function renderFloralBackground(layout, customColors = {}, isCustomText =
           
           <!-- Authentic Terracotta SM Seal Medallion -->
           <g filter="url(#seal-shadow)">
-            <image href="${ASSETS.sealPng}" x="216" y="38" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
+            <image href="${ASSETS.sealPng}" xlink:href="${ASSETS.sealPng}" x="216" y="38" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
       `;
@@ -239,7 +239,7 @@ export function renderFloralBackground(layout, customColors = {}, isCustomText =
           <circle cx="250" cy="250" r="236" fill="none" stroke="url(#gold-foil)" stroke-width="1.6" opacity="0.75"/>
           <circle cx="250" cy="250" r="231" fill="none" stroke="url(#gold-foil)" stroke-width="0.8" opacity="0.5"/>
           <g filter="url(#seal-shadow)">
-            <image href="${ASSETS.sealPng}" x="216" y="44" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
+            <image href="${ASSETS.sealPng}" xlink:href="${ASSETS.sealPng}" x="216" y="44" width="68" height="68" preserveAspectRatio="xMidYMid meet"/>
           </g>
         </g>
       `;
